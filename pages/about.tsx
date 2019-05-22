@@ -1,5 +1,5 @@
-import React from 'react';
 import { NextContext } from 'next';
+import React from 'react';
 
 interface AboutProps {
   userAgent: string;

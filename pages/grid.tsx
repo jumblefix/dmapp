@@ -1,5 +1,5 @@
+import { Box, Flex } from '@rebass/grid';
 import React from 'react';
-import { Flex, Box } from '@rebass/grid';
 import styled from 'styled-components';
 
 const Bar = styled.div`

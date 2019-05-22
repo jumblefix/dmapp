@@ -26,12 +26,14 @@
     "cellspacing",
     "copyfiles",
     "dhayaec",
+    "dmapp",
     "ecmascript",
     "fastify",
     "flushall",
     "gitignore",
     "gmail",
     "graphiql",
+    "inferrable",
     "lerna",
     "lightblue",
     "lpush",
@@ -41,6 +43,7 @@
     "nbsp",
     "nohoist",
     "ormconfig",
+    "parens",
     "precommit",
     "preheader",
     "proviced",
@@ -57,4 +60,7 @@
   "editor.emptySelectionClipboard": false,
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.preferences.importModuleSpecifier": "relative"
+  // "editor.codeActionsOnSave": {
+  //   "source.fixAll.tslint": true
+  // }
 }
