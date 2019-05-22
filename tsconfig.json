@@ -16,7 +16,7 @@
     "sourceMap": true,
     "skipLibCheck": true,
     "noImplicitAny": true,
-    // "baseUrl": ".",
+    "baseUrl": ".",
     "typeRoots": ["./node_modules/@types"],
     "lib": ["dom", "es2015", "es2016"],
     "outDir": ".next",
