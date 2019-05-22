@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { Button } from '../components/ui/Button';
 
 export default () => (
   <div>
@@ -11,5 +12,6 @@ export default () => (
       </li>
     </ul>
     <h1>Home</h1>
+    <Button>Hello</Button>
   </div>
 );
