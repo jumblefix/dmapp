@@ -53,14 +53,15 @@
     "resave",
     "rspace",
     "slugify",
+    "submodule",
     "typeorm",
     "varchar",
     "zeit"
   ],
   "editor.emptySelectionClipboard": false,
   "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.preferences.importModuleSpecifier": "relative"
-  // "editor.codeActionsOnSave": {
-  //   "source.fixAll.tslint": true
-  // }
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.tslint": true
+  }
 }

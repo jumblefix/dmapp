@@ -4,11 +4,12 @@
   "scripts": {
     "dev": "nodemon",
     "build": "next build && tsc && tsc --project tsconfig.server.json",
-    "start": "cross-env NODE_ENV=production node .next/server"
+    "start": "cross-env NODE_ENV=production node .next/server",
+    "lint": "tslint --project ./tsconfig.json -c tslint.json --fix"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "tslint -c tslint.json --fix",
+      "yarn lint",
       "git add"
     ]
   },

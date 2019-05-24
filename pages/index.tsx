@@ -15,6 +15,16 @@ export default () => (
           <a>about</a>
         </Link>
       </li>
+      <li>
+        <Link href="/admin" as="/admin">
+          <a>admin</a>
+        </Link>
+      </li>
+      <li>
+        <Link href="/admin/manage" as="/admin/manage">
+          <a>admin/manage</a>
+        </Link>
+      </li>
     </ul>
     <h1>Home</h1>
     <Button>Hello</Button>
