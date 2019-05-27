@@ -11,7 +11,8 @@ import * as helmet from 'helmet';
 import * as http from 'http';
 import { connectDb, createDb } from './db';
 import { redis } from './redis';
-import { AppContext } from './types/types';
+
+import { AppContext } from '../types/types';
 import { Env } from './utils/constants';
 import { createSchema } from './utils/create-schema';
 

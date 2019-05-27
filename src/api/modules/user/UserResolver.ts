@@ -1,7 +1,7 @@
 import { emailSchema } from '@utils/common';
 import { Arg, Ctx, Query, Resolver } from 'type-graphql';
+import { AppContext } from '../../../types/types';
 import { User } from '../../entity/User';
-import { AppContext } from '../../types/types';
 import { validateInputs } from '../../utils/utils';
 
 @Resolver(User)

@@ -1,9 +1,9 @@
 import { errorMessages } from '@utils/common';
 import * as bcryptjs from 'bcryptjs';
 import { Arg, Ctx, Mutation, Resolver } from 'type-graphql';
+import { AppContext } from '../../../types/types';
 import { User } from '../../entity/User';
 import { redis } from '../../redis';
-import { AppContext } from '../../types/types';
 import { TokenTypes } from '../../utils/constants';
 import { createTokenLink, isAuthenticated } from '../../utils/utils';
 

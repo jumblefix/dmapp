@@ -3,7 +3,8 @@ import { UserInputError, ValidationError } from 'apollo-server-core';
 import * as IORedis from 'ioredis';
 import slugify from 'slugify';
 import { v4 } from 'uuid';
-import { AppContext } from '../types/types';
+
+import { AppContext } from '../../types/types';
 import { ITEMS_PER_PAGE, TokenTypes } from './constants';
 
 export const printMessage = (str: string) => `Hello ${str}`;

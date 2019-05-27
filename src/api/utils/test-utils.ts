@@ -1,6 +1,5 @@
 import { graphql, GraphQLSchema } from 'graphql';
 import Maybe from 'graphql/tsutils/Maybe';
-import { formatArgumentValidationError } from 'type-graphql';
 import { createSchema } from './create-schema';
 
 interface Options {
@@ -43,6 +42,6 @@ export const gqlCall = async ({
 
   return {
     data: result.data,
-    errors: result.errors && result.errors.map(formatArgumentValidationError),
+    errors: result.errors,
   };
 };
