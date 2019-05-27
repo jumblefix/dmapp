@@ -6,6 +6,6 @@
     "target": "es2017",
     "lib": ["es2017"]
   },
-  "include": ["server/**/*.ts"],
+  "include": ["src/server/**/*.ts"],
   "exclude": [".next"]
 }

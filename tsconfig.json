@@ -21,8 +21,9 @@
     "lib": ["dom", "es2015", "es2016"],
     "outDir": ".next",
     "paths": {
-      "sitemap": ["types/sitemap"]
+      "sitemap": ["src/types/sitemap"]
     }
   },
-  "exclude": [".next", "server/**/*.*"]
+  "exclude": [".next"],
+  "include": ["src/server/**/*.ts"]
 }

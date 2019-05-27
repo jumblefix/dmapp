@@ -1,8 +1,8 @@
 import App, { Container, NextAppContext } from 'next/app';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { AppGlobalStyle } from '../utils/globalStyles';
-import { appTheme } from '../utils/theme';
+import { AppGlobalStyle } from '../src/utils/globalStyles';
+import { appTheme } from '../src/utils/theme';
 
 export default class MyApp extends App {
   static async getInitialProps({ Component, ctx }: NextAppContext) {
