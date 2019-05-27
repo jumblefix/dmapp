@@ -20,10 +20,7 @@ app.prepare().then(() => {
     handle(req, res);
   });
 
-  server.listen(port, (err: any) => {
-    if (err) {
-      throw err;
-    }
+  server.listen(port, () => {
     console.log(`> Ready on ${ROOT_URL}`);
   });
 });

@@ -1,5 +1,4 @@
 import * as path from 'path';
-/// <reference types="./types/sitemap" />
 import * as sm from 'sitemap';
 
 const sitemap = sm.createSitemap({

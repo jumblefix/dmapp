@@ -1,11 +1,14 @@
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import React from 'react';
-import { Button } from '../components/ui/Button';
+import { Button } from '../src/components/ui/Button';
 
-const DynamicComponentWithNoSSR = dynamic(() => import('../components/Demo'), {
-  ssr: false,
-});
+const DynamicComponentWithNoSSR = dynamic(
+  () => import('../src/components/Demo'),
+  {
+    ssr: false,
+  },
+);
 
 export default () => (
   <div>
