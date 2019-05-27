@@ -21,9 +21,11 @@
     "lib": ["dom", "es2015", "es2016"],
     "outDir": ".next",
     "paths": {
-      "sitemap": ["src/types/sitemap"]
-    }
+      "sitemap": ["src/types/sitemap"],
+      "@utils/*": ["src/utils/*"]
+    },
+    "experimentalDecorators": true
   },
   "exclude": [".next"],
-  "include": ["src/server/**/*.ts"]
+  "include": ["src/**/*.ts"]
 }

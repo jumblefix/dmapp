@@ -13,6 +13,9 @@
     "no-submodule-imports": false,
     "variable-name": false,
     "object-literal-sort-keys": false,
-    "member-access": false
+    "member-access": false,
+    "object-shorthand-properties-first": false,
+    "interface-name": false,
+    "no-implicit-dependencies": [true, ["@utils"]]
   }
 }
