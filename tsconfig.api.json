@@ -5,6 +5,10 @@
     "module": "commonjs",
     "lib": ["es2016", "esnext.asynciterable"],
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "paths": {
+      "sitemap": ["src/types/sitemap"],
+      "@utils/*": ["src/utils/*"]
+    }
   }
 }

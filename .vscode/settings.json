@@ -43,6 +43,7 @@
     "lrange",
     "lspace",
     "mariadb",
+    "middlewares",
     "nbsp",
     "nohoist",
     "ormconfig",

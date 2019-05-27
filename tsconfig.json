@@ -24,7 +24,8 @@
       "sitemap": ["src/types/sitemap"],
       "@utils/*": ["src/utils/*"]
     },
-    "strictPropertyInitialization": false
+    "strictPropertyInitialization": false,
+    "experimentalDecorators": true
   },
   "exclude": [".next"],
   "include": ["src/**/*.ts"]
