@@ -13,7 +13,7 @@ import {
   VersionColumn,
 } from 'typeorm';
 
-import { makeSlug } from '../utils/utils';
+import { makeSlug } from '~api/utils/utils';
 import { Category } from './Category';
 
 @Entity('products')

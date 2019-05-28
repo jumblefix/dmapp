@@ -59,7 +59,7 @@ export class UserAccountUtils {
     @Arg('confirmPassword') confirmPassword: string,
   ): Promise<User | undefined> {
     if (password !== confirmPassword) {
-      throw new Error(errorMessages.passwordsDontMatch);
+      throw new Error(errorMessages.passwordsDoNotMatch);
     }
 
     const userId = await redis.get(token);

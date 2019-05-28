@@ -1,6 +1,6 @@
 export const errorMessages = {
   invalidCategory: 'Invalid Category',
-  passwordsDontMatch: 'passwords dont match',
+  passwordsDoNotMatch: "passwords don't match",
   invalidToken: 'Invalid or expired Token',
   userNotFound: 'User not found',
   loginToContinue: 'Please login to continue',
@@ -9,9 +9,6 @@ export const errorMessages = {
   invalidParentCategory: 'Invalid parent category',
   emailAlreadyExists: 'Email already exists',
   productNotFound: 'Product not found',
-  alreadyInCart: 'Already in cart',
-  itemNotInCart: 'Item not in cart',
-  cartIsEmpty: 'Cart is empty',
   validationFailed: 'Validation failed',
   notAuthorized: 'You are not authorized to perform this task',
   notAuthorizedToRegister: 'You are not authorized to register',

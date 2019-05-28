@@ -199,51 +199,11 @@ export const getBreadCrumbPathQuery = gql`
   }
 `;
 
-export const getCartQuery = gql`
-  query {
-    getCart {
-      title
-      product {
-        title
-      }
-      user {
-        name
-      }
-    }
-  }
-`;
-
-export const addToCartMutation = gql`
-  mutation AddToCart($productId: String!) {
-    addToCart(productId: $productId) {
-      title
-    }
-  }
-`;
-
-export const removeFromCartMutation = gql`
-  mutation RemoveFromCart($cartId: String!) {
-    removeFromCart(cartId: $cartId)
-  }
-`;
-
-export const emptyCartMutation = gql`
-  mutation {
-    emptyCart
-  }
-`;
-
 export const getCategoryBySlugQuery = gql`
   query GetCategoryBySlugQuery($slug: String!) {
     getCategoryBySlug(slug: $slug) {
       name
       slug
     }
-  }
-`;
-
-export const updateCartMutation = gql`
-  mutation UpdateCartMutation($cartId: String!, $quantity: Float!) {
-    updateCart(cartId: $cartId, quantity: $quantity)
   }
 `;

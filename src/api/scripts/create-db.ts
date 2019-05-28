@@ -1,4 +1,4 @@
-import { createDb } from '../db';
+import { createDb } from '~api/db';
 
 createDb()
   .then()

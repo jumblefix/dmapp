@@ -308,7 +308,7 @@ describe('UserAccountUtils', () => {
       });
 
       expect(res).toMatchObject({
-        errors: [{ message: errorMessages.passwordsDontMatch }],
+        errors: [{ message: errorMessages.passwordsDoNotMatch }],
       });
 
       const res2 = await gqlCall({
