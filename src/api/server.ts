@@ -10,10 +10,10 @@ import * as session from 'express-session';
 import * as helmet from 'helmet';
 import * as http from 'http';
 import { AppContext } from '~types/types';
+import { Env } from '~utils/constants';
+import { createSchema } from '~utils/create-schema';
 import { connectDb, createDb } from './db';
 import { redis } from './redis';
-import { Env } from './utils/constants';
-import { createSchema } from './utils/create-schema';
 
 export const startServer = async () => {
   try {

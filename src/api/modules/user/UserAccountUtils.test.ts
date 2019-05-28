@@ -11,12 +11,12 @@ import {
   meQuery,
   resendVerifySignUp as resendVerifySignUpMutation,
   verifyForgotPasswordMutation,
-} from '~api/graphql-operations';
+} from '~api/graphql-queries';
 import { redis } from '~api/redis';
-import { TokenTypes } from '~api/utils/constants';
-import { gqlCall } from '~api/utils/test-utils';
-import { createTokenLink } from '~api/utils/utils';
 import { errorMessages } from '~utils/common';
+import { TokenTypes } from '~utils/constants';
+import { gqlCall } from '~utils/test-utils';
+import { createTokenLink } from '~utils/utils';
 
 let userId: string;
 let name: string;

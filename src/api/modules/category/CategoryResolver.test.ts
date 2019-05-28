@@ -12,9 +12,9 @@ import {
   getChildCategoriesQuery,
   getMainCategoryQuery,
   removeCategoryMutation,
-} from '~api/graphql-operations';
-import { gqlCall } from '~api/utils/test-utils';
+} from '~api/graphql-queries';
 import { errorMessages } from '~utils/common';
+import { gqlCall } from '~utils/test-utils';
 
 let conn: Connection;
 let a1: Category;

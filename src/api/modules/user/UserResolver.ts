@@ -1,8 +1,8 @@
 import { Arg, Ctx, Query, Resolver } from 'type-graphql';
 import { User } from '~api/entity/User';
-import { validateInputs } from '~api/utils/utils';
 import { AppContext } from '~types/types';
 import { emailSchema } from '~utils/common';
+import { validateInputs } from '~utils/utils';
 
 @Resolver(User)
 export class UserResolver {

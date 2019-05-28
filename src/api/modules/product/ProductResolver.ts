@@ -1,9 +1,9 @@
 import { Arg, Mutation, Query, Resolver } from 'type-graphql';
 import { Category } from '~api/entity/Category';
 import { Product } from '~api/entity/Product';
-import { ITEMS_PER_PAGE } from '~api/utils/constants';
-import { skipPage, validateInputs } from '~api/utils/utils';
 import { errorMessages, productSchema } from '~utils/common';
+import { ITEMS_PER_PAGE } from '~utils/constants';
+import { skipPage, validateInputs } from '~utils/utils';
 import { ProductInput } from './ProductInput';
 
 @Resolver(Product)

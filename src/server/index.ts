@@ -3,7 +3,7 @@ import * as next from 'next';
 import { sitemapAndRobots } from './sitemapRobots';
 
 const dev = process.env.NODE_ENV !== 'production';
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3000;
 const ROOT_URL = dev
   ? `http://localhost:${port}`
   : 'https://dhayaec.localtunnel.me';

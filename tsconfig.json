@@ -30,5 +30,5 @@
     },
     "strictPropertyInitialization": false
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts", "pages/**/*.tsx"]
 }

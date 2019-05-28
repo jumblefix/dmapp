@@ -2,8 +2,8 @@
 import { Arg, Mutation, Resolver, UseMiddleware } from 'type-graphql';
 import { User } from '~api/entity/User';
 import { checkIsAdminToRegister } from '~api/middlewares';
-import { validateInputs } from '~api/utils/utils';
 import { errorMessages, userSchema } from '~utils/common';
+import { validateInputs } from '~utils/utils';
 import { RegisterInput } from './register/RegisterInput';
 
 @Resolver(User)
