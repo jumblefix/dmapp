@@ -69,5 +69,6 @@
   "typescript.preferences.importModuleSpecifier": "relative",
   "editor.codeActionsOnSave": {
     "source.fixAll.tslint": true
-  }
+  },
+  "browser-preview.startUrl": "http://localhost:3000"
 }
