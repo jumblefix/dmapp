@@ -3,8 +3,12 @@
   "compilerOptions": {
     "noEmit": true,
     "strict": true,
-    "target": "esnext",
-    "module": "esnext",
+    "target": "es2016",
+    "module": "commonjs",
+    "lib": ["es2016", "esnext.asynciterable"],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "outDir": "./dist",
     "jsx": "preserve",
     "allowJs": true,
     "moduleResolution": "node",
@@ -18,17 +22,13 @@
     "noImplicitAny": true,
     "baseUrl": ".",
     "typeRoots": ["./node_modules/@types"],
-    "lib": ["dom", "es2015", "es2016"],
-    "outDir": ".next",
     "paths": {
       "sitemap": ["src/types/sitemap"],
       "~utils/*": ["src/utils/*"],
       "~api/*": ["src/api/*"],
       "~types/*": ["src/types/*"]
     },
-    "strictPropertyInitialization": false,
-    "experimentalDecorators": true
+    "strictPropertyInitialization": false
   },
-  "exclude": [".next"],
   "include": ["src/**/*.ts"]
 }

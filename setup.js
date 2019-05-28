@@ -1,6 +1,4 @@
-require('ts-node').register({
-  project: 'tsconfig.api.json',
-});
+require('ts-node').register();
 const { connectTestDb } = require('./src/api/db');
 
 module.exports = async () => {

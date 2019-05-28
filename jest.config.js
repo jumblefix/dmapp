@@ -5,9 +5,4 @@ module.exports = {
   moduleNameMapper: { '~(.*)': '<rootDir>/src/$1' },
   globalSetup: './setup.js',
   globalTeardown: './teardown.js',
-  globals: {
-    'ts-jest': {
-      tsConfig: 'tsconfig.api.json',
-    },
-  },
 };
