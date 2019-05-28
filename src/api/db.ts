@@ -8,7 +8,7 @@ const iconv = require('iconv-lite');
 const encodings = require('iconv-lite/encodings');
 iconv.encodings = encodings;
 import { Connection, createConnection, getConnectionManager } from 'typeorm';
-import { ConnectionList } from '../types/types';
+import { ConnectionList } from '~types/types';
 
 const {
   DB_HOST,

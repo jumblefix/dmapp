@@ -1,7 +1,7 @@
 import { Arg, Mutation, Resolver } from 'type-graphql';
+import { Category } from '~api/entity/Category';
+import { Product } from '~api/entity/Product';
 import { errorMessages } from '~utils/common';
-import { Category } from '../../entity/Category';
-import { Product } from '../../entity/Product';
 import { ProductInput } from './ProductInput';
 
 @Resolver()

@@ -22,7 +22,9 @@
     "outDir": ".next",
     "paths": {
       "sitemap": ["src/types/sitemap"],
-      "~utils/*": ["src/utils/*"]
+      "~utils/*": ["src/utils/*"],
+      "~api/*": ["src/api/*"],
+      "~types/*": ["src/types/*"]
     },
     "strictPropertyInitialization": false,
     "experimentalDecorators": true

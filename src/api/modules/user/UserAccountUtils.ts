@@ -1,11 +1,11 @@
 import * as bcryptjs from 'bcryptjs';
 import { Arg, Ctx, Mutation, Resolver } from 'type-graphql';
+import { User } from '~api/entity/User';
+import { redis } from '~api/redis';
+import { TokenTypes } from '~api/utils/constants';
+import { createTokenLink, isAuthenticated } from '~api/utils/utils';
+import { AppContext } from '~types/types';
 import { errorMessages } from '~utils/common';
-import { AppContext } from '../../../types/types';
-import { User } from '../../entity/User';
-import { redis } from '../../redis';
-import { TokenTypes } from '../../utils/constants';
-import { createTokenLink, isAuthenticated } from '../../utils/utils';
 
 @Resolver()
 export class UserAccountUtils {

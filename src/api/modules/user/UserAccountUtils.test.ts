@@ -1,7 +1,7 @@
 import { print } from 'graphql/language/printer';
 import { Connection } from 'typeorm';
-import { errorMessages } from '~utils/common';
-import { connectTestDb } from '../../db';
+import { connectTestDb } from '~api/db';
+import { User } from '~api/entity/User';
 import {
   changeEmailMutation,
   changePasswordMutation,
@@ -9,14 +9,14 @@ import {
   getUserQuery,
   isEmailExistsQuery,
   meQuery,
-  resendVerifySignup as resendVerifySignupMutation,
+  resendVerifySignUp as resendVerifySignUpMutation,
   verifyForgotPasswordMutation,
-} from '../../graphql-operations';
-import { redis } from '../../redis';
-import { TokenTypes } from '../../utils/constants';
-import { gqlCall } from '../../utils/test-utils';
-import { User } from './../../entity/User';
-import { createTokenLink } from './../../utils/utils';
+} from '~api/graphql-operations';
+import { redis } from '~api/redis';
+import { TokenTypes } from '~api/utils/constants';
+import { gqlCall } from '~api/utils/test-utils';
+import { createTokenLink } from '~api/utils/utils';
+import { errorMessages } from '~utils/common';
 
 let userId: string;
 let name: string;
@@ -39,27 +39,27 @@ afterAll(() => {
 });
 
 describe('UserAccountUtils', () => {
-  describe('resendVerifySignup', () => {
+  describe('resendVerifySignUp', () => {
     it('should send verify signup', async () => {
       const response = await gqlCall({
-        source: print(resendVerifySignupMutation),
+        source: print(resendVerifySignUpMutation),
         userId,
       });
 
       expect(response).toMatchObject({
         data: {
-          resendVerifySignup: true,
+          resendVerifySignUp: true,
         },
       });
 
       const response2 = await gqlCall({
-        source: print(resendVerifySignupMutation),
+        source: print(resendVerifySignUpMutation),
         userId: '',
       });
 
       expect(response2).toMatchObject({
         data: {
-          resendVerifySignup: false,
+          resendVerifySignUp: false,
         },
       });
     });

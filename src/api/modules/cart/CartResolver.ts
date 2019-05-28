@@ -1,10 +1,10 @@
 import { Arg, Ctx, Mutation, Query, Resolver } from 'type-graphql';
+import { Cart } from '~api/entity/Cart';
+import { Product } from '~api/entity/Product';
+import { User } from '~api/entity/User';
+import { isAuthenticated } from '~api/utils/utils';
+import { AppContext } from '~types/types';
 import { errorMessages } from '~utils/common';
-import { AppContext } from '../../../types/types';
-import { Product } from '../../entity/Product';
-import { User } from '../../entity/User';
-import { isAuthenticated } from '../../utils/utils';
-import { Cart } from './../../entity/Cart';
 
 @Resolver(Cart)
 export class CartResolver {

@@ -1,19 +1,19 @@
 import { print } from 'graphql/language/printer';
 import { Connection } from 'typeorm';
-import { errorMessages } from '~utils/common';
-import { connectTestDb } from '../../db';
-import { Cart } from '../../entity/Cart';
-import { Product } from '../../entity/Product';
-import { User } from '../../entity/User';
+import { connectTestDb } from '~api/db';
+import { Cart } from '~api/entity/Cart';
+import { Category } from '~api/entity/Category';
+import { Product } from '~api/entity/Product';
+import { User } from '~api/entity/User';
 import {
   addToCartMutation,
   emptyCartMutation,
   getCartQuery,
   removeFromCartMutation,
   updateCartMutation,
-} from '../../graphql-operations';
-import { gqlCall } from '../../utils/test-utils';
-import { Category } from './../../entity/Category';
+} from '~api/graphql-operations';
+import { gqlCall } from '~api/utils/test-utils';
+import { errorMessages } from '~utils/common';
 
 let conn: Connection;
 beforeAll(async () => {

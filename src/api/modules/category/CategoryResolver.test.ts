@@ -1,8 +1,8 @@
 import { print } from 'graphql/language/printer';
 import { Connection, getManager } from 'typeorm';
-import { errorMessages } from '~utils/common';
-import { connectTestDb } from '../../db';
-import { User } from '../../entity/User';
+import { connectTestDb } from '~api/db';
+import { Category } from '~api/entity/Category';
+import { User } from '~api/entity/User';
 import {
   addCategoryMutation,
   addCategoryWithParentMutation,
@@ -10,11 +10,11 @@ import {
   getCategoryByIdQuery,
   getCategoryBySlugQuery,
   getChildCategoriesQuery,
+  getMainCategoryQuery,
   removeCategoryMutation,
-} from '../../graphql-operations';
-import { Category } from './../../entity/Category';
-import { getMainCategoryQuery } from './../../graphql-operations';
-import { gqlCall } from './../../utils/test-utils';
+} from '~api/graphql-operations';
+import { gqlCall } from '~api/utils/test-utils';
+import { errorMessages } from '~utils/common';
 
 let conn: Connection;
 let a1: Category;

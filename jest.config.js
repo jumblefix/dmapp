@@ -2,7 +2,7 @@ module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   moduleFileExtensions: ['ts', 'tsx', 'js'],
-  moduleNameMapper: { '~utils/(.*)': '<rootDir>/src/utils/$1' },
+  moduleNameMapper: { '~(.*)': '<rootDir>/src/$1' },
   globalSetup: './setup.js',
   globalTeardown: './teardown.js',
   globals: {

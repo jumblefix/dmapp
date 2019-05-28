@@ -1,8 +1,8 @@
 import * as bcryptjs from 'bcryptjs';
 import { Arg, Ctx, Mutation, Resolver } from 'type-graphql';
+import { User } from '~api/entity/User';
+import { AppContext } from '~types/types';
 import { errorMessages } from '~utils/common';
-import { AppContext } from '../../../types/types';
-import { User } from '../../entity/User';
 
 @Resolver()
 export class LoginResolver {

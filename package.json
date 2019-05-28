@@ -31,7 +31,9 @@
     }
   },
   "_moduleAliases": {
-    "~common": "src/utils/common"
+    "~common": "src/utils/common",
+    "~api": "src/api",
+    "~types": "src/types"
   },
   "dependencies": {
     "@rebass/grid": "^6.0.0",

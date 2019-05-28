@@ -1,15 +1,15 @@
 import { print } from 'graphql/language/printer';
 import { Connection } from 'typeorm';
-import { errorMessages } from '~utils/common';
-import { connectTestDb } from '../../db';
+import { connectTestDb } from '~api/db';
+import { Category } from '~api/entity/Category';
 import {
   addProductMutation,
   getProductQuery,
   getProductsByCategoryQuery,
   listProductsQuery,
-} from '../../graphql-operations';
-import { Category } from './../../entity/Category';
-import { gqlCall } from './../../utils/test-utils';
+} from '~api/graphql-operations';
+import { gqlCall } from '~api/utils/test-utils';
+import { errorMessages } from '~utils/common';
 
 let conn: Connection;
 let category: Category;

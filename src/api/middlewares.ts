@@ -1,6 +1,6 @@
 import { MiddlewareFn } from 'type-graphql';
+import { AppContext } from '~types/types';
 import { errorMessages } from '~utils/common';
-import { AppContext } from '../types/types';
 import { isAuthenticated, isAuthorized } from './utils/utils';
 
 export const checkIsAdmin: MiddlewareFn<AppContext> = async (

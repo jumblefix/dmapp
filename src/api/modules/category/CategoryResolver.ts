@@ -10,10 +10,10 @@ import {
   UseMiddleware,
 } from 'type-graphql';
 import { getManager } from 'typeorm';
+import { Category } from '~api/entity/Category';
+import { Product } from '~api/entity/Product';
+import { checkIsAdmin } from '~api/middlewares';
 import { errorMessages } from '~utils/common';
-import { Product } from '../../entity/Product';
-import { checkIsAdmin } from '../../middlewares';
-import { Category } from './../../entity/Category';
 import { Notification, NotificationPayload } from './Notification';
 
 @Resolver(Product)

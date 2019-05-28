@@ -54,9 +54,9 @@ export const isEmailExistsQuery = gql`
   }
 `;
 
-export const resendVerifySignup = gql`
+export const resendVerifySignUp = gql`
   mutation {
-    resendVerifySignup
+    resendVerifySignUp
   }
 `;
 
