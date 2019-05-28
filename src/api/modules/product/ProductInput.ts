@@ -1,3 +1,4 @@
+import { IsNumber } from 'class-validator';
 import { Field, InputType } from 'type-graphql';
 
 @InputType()
@@ -14,7 +15,8 @@ export class ProductInput {
   @Field()
   description: string;
 
-  @Field({ defaultValue: 0 })
+  @Field()
+  @IsNumber()
   price: number;
 
   @Field()
