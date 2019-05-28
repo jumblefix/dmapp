@@ -1,11 +1,11 @@
 import { NextContext } from 'next';
 import React from 'react';
 
-interface IAboutProps {
+interface AboutProps {
   userAgent: string;
 }
 
-class About extends React.Component<IAboutProps> {
+class About extends React.Component<AboutProps> {
   static async getInitialProps({ req }: NextContext) {
     const userAgent = req ? req.headers['user-agent'] : navigator.userAgent;
     return { userAgent };
