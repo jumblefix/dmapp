@@ -1,24 +1,24 @@
 import { NextContext } from 'next';
 import React from 'react';
+import { Title } from '../src/components/ui/Title';
 
 interface AboutProps {
   userAgent: string;
+  url: string;
 }
 
-class About extends React.Component<AboutProps> {
-  static async getInitialProps({ req }: NextContext) {
-    const userAgent = req ? req.headers['user-agent'] : navigator.userAgent;
-    return { userAgent };
-  }
+const About = ({ userAgent, url }: AboutProps) => (
+  <div>
+    <h1>Hello World</h1>
+    <p>{userAgent}</p>
+    <Title>{url}</Title>
+  </div>
+);
 
-  render() {
-    return (
-      <div>
-        <h1>Hello World</h1>
-        <p>{this.props.userAgent}</p>
-      </div>
-    );
-  }
-}
+About.getInitialProps = async ({ req }: NextContext) => {
+  const userAgent = req ? req.headers['user-agent'] : navigator.userAgent;
+  const url = req ? req.headers.host : location.host;
+  return { userAgent, url };
+};
 
 export default About;
