@@ -1,4 +1,3 @@
-import { errorMessages } from '@utils/common';
 import {
   Arg,
   Mutation,
@@ -11,6 +10,7 @@ import {
   UseMiddleware,
 } from 'type-graphql';
 import { getManager } from 'typeorm';
+import { errorMessages } from '~utils/common';
 import { Product } from '../../entity/Product';
 import { checkIsAdmin } from '../../middlewares';
 import { Category } from './../../entity/Category';

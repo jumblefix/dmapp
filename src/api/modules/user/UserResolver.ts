@@ -1,5 +1,5 @@
-import { emailSchema } from '@utils/common';
 import { Arg, Ctx, Query, Resolver } from 'type-graphql';
+import { emailSchema } from '~utils/common';
 import { AppContext } from '../../../types/types';
 import { User } from '../../entity/User';
 import { validateInputs } from '../../utils/utils';

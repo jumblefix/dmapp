@@ -1,5 +1,5 @@
-import { errorMessages } from '@utils/common';
 import { Arg, Ctx, Mutation, Query, Resolver } from 'type-graphql';
+import { errorMessages } from '~utils/common';
 import { AppContext } from '../../../types/types';
 import { Product } from '../../entity/Product';
 import { User } from '../../entity/User';

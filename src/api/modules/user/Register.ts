@@ -1,6 +1,6 @@
 // import * as bcryptjs from 'bcryptjs';
-import { errorMessages, userSchema } from '@utils/common';
 import { Arg, Mutation, Resolver, UseMiddleware } from 'type-graphql';
+import { errorMessages, userSchema } from '~utils/common';
 import { User } from '../../entity/User';
 import { checkIsAdminToRegister } from '../../middlewares';
 import { validateInputs } from '../../utils/utils';

@@ -1,5 +1,5 @@
-import { errorMessages } from '@utils/common';
 import { createError } from 'apollo-errors';
+import { errorMessages } from '~utils/common';
 
 export enum Env {
   development = 'development',

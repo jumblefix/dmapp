@@ -1,6 +1,6 @@
-import { errorMessages } from '@utils/common';
 import { print } from 'graphql/language/printer';
 import { Connection } from 'typeorm';
+import { errorMessages } from '~utils/common';
 import { connectTestDb } from '../../db';
 import {
   changeEmailMutation,

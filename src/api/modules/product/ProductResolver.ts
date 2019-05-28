@@ -1,5 +1,5 @@
-import { errorMessages, productSchema } from '@utils/common';
 import { Arg, Mutation, Query, Resolver } from 'type-graphql';
+import { errorMessages, productSchema } from '~utils/common';
 import { Category } from '../../entity/Category';
 import { Product } from '../../entity/Product';
 import { ITEMS_PER_PAGE } from '../../utils/constants';

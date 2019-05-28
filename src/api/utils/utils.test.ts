@@ -1,4 +1,4 @@
-// import { errorMessages } from '@utils/common';
+// import { errorMessages } from '~utils/common';
 import { isAuthenticated, printMessage } from './utils';
 
 describe('utils', () => {

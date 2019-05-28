@@ -1,5 +1,5 @@
-import { errorMessages } from '@utils/common';
 import { MiddlewareFn } from 'type-graphql';
+import { errorMessages } from '~utils/common';
 import { AppContext } from '../types/types';
 import { isAuthenticated, isAuthorized } from './utils/utils';
 
