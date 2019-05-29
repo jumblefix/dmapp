@@ -13,7 +13,8 @@
     "create:db": "ts-node src/api/scripts/create-db.ts",
     "test": "jest",
     "test:watch": "jest --watch",
-    "cover": "jest --coverage"
+    "cover": "jest --coverage",
+    "lint:js": "standard --fix "
   },
   "lint-staged": {
     "*.{ts,tsx}": [
@@ -88,6 +89,7 @@
     "link-module-alias": "^1.2.0",
     "lint-staged": "^8.1.7",
     "nodemon": "^1.19.1",
+    "standard": "^12.0.1",
     "ts-jest": "^24.0.2",
     "ts-node": "^8.2.0",
     "tsconfig-paths": "^3.8.0",

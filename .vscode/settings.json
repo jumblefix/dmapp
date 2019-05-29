@@ -71,5 +71,8 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.tslint": true
   },
-  "browser-preview.startUrl": "http://localhost:3000"
+  "browser-preview.startUrl": "http://localhost:3000",
+  "javascript.validate.enable": true,
+  "eslint.enable": false,
+  "standard.autoFixOnSave": true
 }
