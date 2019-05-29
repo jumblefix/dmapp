@@ -13,6 +13,9 @@ const About = ({ userAgent, url }: AboutProps) => (
     <p>{userAgent}</p>
     <Title>{url}</Title>
     <h2>This is a subtitle here.</h2>
+    <p>Welcome to my about us page</p>
+    <p>This is an example of page</p>
+    <Title>Hello World!</Title>
   </div>
 );
 
