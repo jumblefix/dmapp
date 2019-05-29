@@ -8,9 +8,7 @@
       "runtimeArgs": [
         "--inspect-brk",
         "${workspaceRoot}/node_modules/.bin/jest",
-        "--runInBand",
-        "--coverage",
-        "false"
+        "--runInBand"
       ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
@@ -35,6 +33,30 @@
       "request": "launch",
       "name": "Browser Preview: Launch",
       "url": "http://localhost:3000"
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Next: Chrome",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Next: Node",
+      "runtimeExecutable": "${workspaceFolder}/node_modules/next/dist/bin/next",
+      "port": 9229,
+      "console": "integratedTerminal",
+      "env": {
+        "NODE_OPTIONS": "--inspect-brk"
+      }
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Next: Full",
+      "configurations": ["Next: Node", "Next: Chrome"]
     }
   ]
 }
