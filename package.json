@@ -14,7 +14,8 @@
     "create:db": "ts-node src/api/scripts/create-db.ts",
     "test": "jest",
     "test:watch": "jest --watch",
-    "cover": "jest --coverage"
+    "cover": "jest --coverage",
+    "pretest": "yarn postinstall"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
@@ -59,6 +60,7 @@
     "reflect-metadata": "^0.1.13",
     "sitemap": "^2.2.0",
     "slugify": "^1.3.4",
+    "sqlite3": "^4.0.8",
     "styled-components": "^4.2.0",
     "type-graphql": "^0.17.4",
     "typeorm": "^0.2.17",

@@ -7,14 +7,13 @@ const iconv = require('iconv-lite');
 // tslint:disable-next-line:no-var-requires
 const encodings = require('iconv-lite/encodings');
 iconv.encodings = encodings;
+import * as path from 'path';
 import { Connection, createConnection, getConnectionManager } from 'typeorm';
 import { ConnectionList } from '~types/types';
 
 const {
   DB_HOST,
   DB_PORT,
-  DB_USER,
-  DB_PASS,
   DB_NAME_DEV,
   DB_NAME_PROD,
   DB_NAME_TEST,
@@ -27,12 +26,8 @@ const {
 const connectionList: ConnectionList = {
   development: {
     name: 'development',
-    type: DB_TYPE,
-    host: DB_HOST,
-    port: DB_PORT,
-    username: DB_USER,
-    password: DB_PASS,
-    database: DB_NAME_DEV,
+    type: 'sqlite',
+    database: path.join(__dirname, '../', '../', 'data', 'db.sqlite'),
     synchronize: true,
     logging: false,
     entities: ['src/api/entity/**/*.*'],
@@ -46,12 +41,8 @@ const connectionList: ConnectionList = {
   },
   test: {
     name: 'test',
-    type: DB_TYPE,
-    host: DB_HOST,
-    port: DB_PORT,
-    username: DB_USER,
-    password: DB_PASS,
-    database: DB_NAME_TEST,
+    type: 'sqlite',
+    database: ':memory',
     dropSchema: true,
     synchronize: true,
     logging: false,
@@ -66,12 +57,8 @@ const connectionList: ConnectionList = {
   },
   production: {
     name: 'production',
-    type: DB_TYPE,
-    host: DB_HOST,
-    port: DB_PORT,
-    username: DB_USER,
-    password: DB_PASS,
-    database: DB_NAME_PROD,
+    type: 'sqlite',
+    database: path.join(__dirname, '../', '../', 'data', 'prod.sqlite'),
     synchronize: false,
     logging: false,
     entities: ['dist/entity/**/*.*'],
