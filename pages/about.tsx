@@ -12,6 +12,7 @@ const About = ({ userAgent, url }: AboutProps) => (
     <h1>Hello World</h1>
     <p>{userAgent}</p>
     <Title>{url}</Title>
+    <h2>This is a subtitle here.</h2>
   </div>
 );
 

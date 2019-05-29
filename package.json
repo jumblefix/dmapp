@@ -6,6 +6,7 @@
     "build": "next build && tsc && tsc --project tsconfig.server.json",
     "start": "cross-env NODE_ENV=production ts-node --project tsconfig.server.json src/server/",
     "lint": "tslint --project tsconfig.json -c tslint.json --fix",
+    "pretty": "prettier 'pages/**/*.t{s,sx}' 'src/**/*.t{s,sx}' --write",
     "postinstall": "link-module-alias",
     "preinstall": "command -v link-module-alias && link-module-alias clean || true",
     "start:server": "NODE_ENV=development nodemon --config ./nodemon-api.json",
@@ -18,7 +19,9 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
+      "yarn pretty",
       "yarn lint",
+      "yarn lint:js",
       "git add"
     ]
   },
@@ -89,6 +92,7 @@
     "link-module-alias": "^1.2.0",
     "lint-staged": "^8.1.7",
     "nodemon": "^1.19.1",
+    "prettier": "1.17.1",
     "standard": "^12.0.1",
     "ts-jest": "^24.0.2",
     "ts-node": "^8.2.0",
@@ -98,5 +102,10 @@
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.3.3333"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "standard": {
+    "ignore": [
+      "**/*.{ts,tsx}"
+    ]
+  }
 }
