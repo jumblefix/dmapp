@@ -42,7 +42,7 @@ const connectionList: ConnectionList = {
   test: {
     name: 'test',
     type: 'sqlite',
-    database: ':memory',
+    database: path.join(__dirname, '../', '../', 'data', 'test.sqlite'),
     dropSchema: true,
     synchronize: true,
     logging: false,
