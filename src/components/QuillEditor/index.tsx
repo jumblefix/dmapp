@@ -1,9 +1,26 @@
+import { DeltaStatic } from 'quill';
 import React, { Component } from 'react';
 import ReactQuill, { Quill } from 'react-quill';
+import { Button } from '../ui/Button';
 
 interface QuillEditorState {
   content: string;
 }
+
+const EDITOR_CONTENT = 'editorContent';
+
+const getStoredContent = () => {
+  const content = localStorage.getItem(EDITOR_CONTENT);
+  if (content) {
+    try {
+      return JSON.parse(content);
+    } catch (error) {
+      console.error(error);
+      return '';
+    }
+  }
+  return '';
+};
 
 export default class QuillEditor extends Component {
   state: QuillEditorState = {
@@ -20,7 +37,7 @@ export default class QuillEditor extends Component {
         { indent: '-1' },
         { indent: '+1' },
       ],
-      ['link', 'image'],
+      ['link', 'image', 'video'],
       ['clean'],
     ],
   };
@@ -37,6 +54,7 @@ export default class QuillEditor extends Component {
     'indent',
     'link',
     'image',
+    'video',
   ];
 
   private editorRef = React.createRef<ReactQuill>();
@@ -48,13 +66,32 @@ export default class QuillEditor extends Component {
     if (current) {
       const { getEditor } = current;
       const content = getEditor().getContents();
-      const text = getEditor().getText();
-      const length = getEditor().getLength();
-      console.log(content, text, length);
+      const store = JSON.stringify(content);
+      localStorage.setItem(EDITOR_CONTENT, store);
     }
   };
 
+  componentDidMount() {
+    const { current } = this.editorRef;
+    if (current) {
+      const { getEditor } = current;
+      getEditor().setContents(getStoredContent());
+      getEditor().focus();
+    }
+  }
+
   onChange = (content: string) => this.setState({ content });
+
+  clearData = () => {
+    localStorage.removeItem(EDITOR_CONTENT);
+    const { current } = this.editorRef;
+    if (current) {
+      const { getEditor } = current;
+      const emptyDelta: unknown = [{ insert: '\n' }];
+      getEditor().setContents(emptyDelta as DeltaStatic);
+      getEditor().focus();
+    }
+  };
 
   render() {
     return (
@@ -67,7 +104,9 @@ export default class QuillEditor extends Component {
           onBlur={this.onBlur}
           ref={this.editorRef}
         />
-        <button onClick={this.onClick}>Get Data</button>
+        <Button onClick={this.onClick}>Save Data</Button>
+
+        <Button onClick={this.clearData}>Clear Data</Button>
       </div>
     );
   }
