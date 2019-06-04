@@ -16,6 +16,10 @@ class MyDocument extends Document {
             href="/static/img/icons/favicon/favicon.ico"
             type="image/x-icon"
           />
+          <link
+            rel="stylesheet"
+            href="//cdn.quilljs.com/1.2.6/quill.snow.css"
+          />
         </Head>
         <body>
           <Main />
