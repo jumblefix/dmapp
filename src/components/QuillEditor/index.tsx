@@ -1,6 +1,6 @@
 import { DeltaStatic } from 'quill';
 import React, { Component } from 'react';
-import ReactQuill, { Quill } from 'react-quill';
+import ReactQuill from 'react-quill';
 import { Button } from '../ui/Button';
 
 interface QuillEditorState {
@@ -59,9 +59,9 @@ export default class QuillEditor extends Component {
 
   private editorRef = React.createRef<ReactQuill>();
 
-  onBlur = () => console.log('onBlur');
+  onBlur = () => setTimeout(this.saveData(), 500);
 
-  onClick = () => {
+  saveData = () => {
     const { current } = this.editorRef;
     if (current) {
       const { getEditor } = current;
@@ -70,6 +70,8 @@ export default class QuillEditor extends Component {
       localStorage.setItem(EDITOR_CONTENT, store);
     }
   };
+
+  onClick = () => this.saveData();
 
   componentDidMount() {
     const { current } = this.editorRef;
@@ -94,6 +96,8 @@ export default class QuillEditor extends Component {
   };
 
   render() {
+    const { content } = this.state;
+
     return (
       <div className="text-editor">
         <ReactQuill
@@ -107,6 +111,12 @@ export default class QuillEditor extends Component {
         <Button onClick={this.onClick}>Save Data</Button>
 
         <Button onClick={this.clearData}>Clear Data</Button>
+
+        <div
+          dangerouslySetInnerHTML={{
+            __html: content.replace('<p><br></p>', ''),
+          }}
+        />
       </div>
     );
   }

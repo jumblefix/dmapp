@@ -17,6 +17,7 @@ class MyDocument extends Document {
             type="image/x-icon"
           />
           <link rel="stylesheet" href="/static/css/quill.snow.css" />
+          <link rel="stylesheet" href="/static/css/foghorn.css" />
         </Head>
         <body>
           <Main />
