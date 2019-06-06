@@ -47,6 +47,7 @@
     "middlewares",
     "nbsp",
     "nohoist",
+    "nprogress",
     "ormconfig",
     "parens",
     "precommit",

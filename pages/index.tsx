@@ -28,6 +28,11 @@ export default () => (
           <a>admin/manage</a>
         </Link>
       </li>
+      <li>
+        <Link href="/grid" as="/grid">
+          <a>grid</a>
+        </Link>
+      </li>
     </ul>
     <h1>Home</h1>
     <Button>Hello</Button>

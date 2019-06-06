@@ -16,6 +16,7 @@ class MyDocument extends Document {
             href="/static/img/icons/favicon/favicon.ico"
             type="image/x-icon"
           />
+          <link rel="stylesheet" href="/static/css/nprogress.css" />
         </Head>
         <body>
           <Main />
