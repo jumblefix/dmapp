@@ -6,9 +6,11 @@ module.exports = {
   globalSetup: './setup.js',
   globalTeardown: './teardown.js',
   testPathIgnorePatterns: ['<rootDir>/coverage', '<rootDir>/cypress'],
-  collectCoverageFrom: ['<rootDir>/src/api/**/*.{ts,tsx}'],
+  collectCoverageFrom: ['<rootDir>/src/api/**/*.ts'],
   coveragePathIgnorePatterns: [
     '<rootDir>/src/api/db.ts',
+    '<rootDir>/src/api/index.ts',
+    '<rootDir>/src/api/scripts/create-db.ts',
     '<rootDir>/coverage',
     '<rootDir>/cypress',
   ],
