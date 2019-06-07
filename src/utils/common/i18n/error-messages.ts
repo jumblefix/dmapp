@@ -13,4 +13,7 @@ export const errorMessages = {
   notAuthorized: 'You are not authorized to perform this task',
   notAuthorizedToRegister: 'You are not authorized to register',
   invalidUsernameOrPassword: 'Invalid email or password',
+  invalidTag: 'Invalid Tag entered',
+  tagAlreadyExists: 'Tag already exists',
+  categoryAlreadyExists: 'Category already exists',
 };

@@ -8,6 +8,7 @@ import { LogoutResolver } from '~api/modules/user/Logout';
 import { RegisterResolver } from '~api/modules/user/Register';
 import { UserAccountUtils } from '~api/modules/user/UserAccountUtils';
 import { UserResolver } from '~api/modules/user/UserResolver';
+import { TagResolver } from '../api/modules/tag/TagResolver';
 
 export const createSchema = () => {
   const options: Redis.RedisOptions = {
@@ -29,6 +30,7 @@ export const createSchema = () => {
       UserAccountUtils,
       ArticleResolver,
       CategoryResolver,
+      TagResolver,
     ],
     pubSub,
   });

@@ -14,6 +14,7 @@ import { Article } from '~api/entity/Article';
 import { Category } from '~api/entity/Category';
 import { checkIsAdmin } from '~api/middlewares';
 import { errorMessages } from '~utils/common';
+import { makeSlug } from '../../../utils/utils';
 import { Notification, NotificationPayload } from './Notification';
 
 @Resolver(Article)
@@ -111,6 +112,18 @@ export class CategoryResolver {
       if (!parent) {
         throw new Error(errorMessages.invalidParentCategory);
       }
+    }
+
+    const slug = makeSlug(name);
+
+    const category = await Category.findOne({
+      where: {
+        slug,
+      },
+    });
+
+    if (category) {
+      throw new Error(errorMessages.categoryAlreadyExists);
     }
 
     const c = Category.create({

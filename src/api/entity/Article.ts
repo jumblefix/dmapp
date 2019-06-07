@@ -7,6 +7,7 @@ import {
   Entity,
   Index,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   Unique,
   UpdateDateColumn,
@@ -14,6 +15,7 @@ import {
 } from 'typeorm';
 
 import { makeSlug } from '~utils/utils';
+import { ArticleTags } from './ArticleTags';
 import { Category } from './Category';
 
 @Entity('articles')
@@ -61,6 +63,9 @@ export class Article extends BaseEntity {
   @Field(() => Category)
   @ManyToOne(() => Category, category => category.articles)
   category: Category;
+
+  @OneToMany(() => ArticleTags, t => t.tags)
+  tagConnection: Promise<ArticleTags[]>;
 
   @BeforeInsert()
   async slugify() {

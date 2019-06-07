@@ -1,4 +1,5 @@
 import 'styled-components';
+import { createArticlesLoader } from '../api/articleTagsLoader';
 
 declare module 'styled-components' {
   export interface IDefaultTheme {
@@ -24,6 +25,7 @@ export interface ConnectionList {
 export interface AppContext {
   req: Request;
   res: Response;
+  articlesLoader: ReturnType<typeof createAuthorsLoader>;
 }
 
 export type Lazy<T extends object> = Promise<T> | T;
