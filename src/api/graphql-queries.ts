@@ -100,27 +100,27 @@ export const changeEmailMutation = gql`
   }
 `;
 
-export const listProductsQuery = gql`
-  query ListProduct($page: Float) {
-    listProducts(page: $page) {
+export const listArticlesQuery = gql`
+  query ListArticle($page: Float) {
+    listArticles(page: $page) {
       title
       id
     }
   }
 `;
 
-export const getProductQuery = gql`
-  query GetProduct($id: String!) {
-    getProduct(id: $id) {
+export const getArticleQuery = gql`
+  query GetArticle($id: String!) {
+    getArticle(id: $id) {
       title
       id
     }
   }
 `;
 
-export const getProductsByCategoryQuery = gql`
-  query GetProduct($categoryId: String!) {
-    getProductsByCategory(categoryId: $categoryId) {
+export const getArticlesByCategoryQuery = gql`
+  query GetArticle($categoryId: String!) {
+    getArticlesByCategory(categoryId: $categoryId) {
       title
       id
     }
@@ -136,11 +136,10 @@ export const getCategoryByIdQuery = gql`
   }
 `;
 
-export const addProductMutation = gql`
-  mutation AddProduct($data: ProductInput!) {
-    addProduct(data: $data) {
+export const addArticleMutation = gql`
+  mutation AddArticle($data: ArticleInput!) {
+    addArticle(data: $data) {
       title
-      price
       category {
         name
       }

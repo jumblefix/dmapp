@@ -16,7 +16,7 @@ import {
   VersionColumn,
 } from 'typeorm';
 import { makeSlug } from '~utils/utils';
-import { Product } from './Product';
+import { Article } from './Article';
 
 @Entity('categories')
 @Unique(['slug'])
@@ -57,9 +57,9 @@ export class Category extends BaseEntity {
   @VersionColumn()
   version: number;
 
-  @Field(() => [Product])
-  @OneToMany(() => Product, product => product.category)
-  products: Product[];
+  @Field(() => [Article])
+  @OneToMany(() => Article, article => article.category)
+  articles: Article[];
 
   @BeforeInsert()
   async slugify() {

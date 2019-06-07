@@ -16,11 +16,11 @@ import {
 import { makeSlug } from '~utils/utils';
 import { Category } from './Category';
 
-@Entity('products')
+@Entity('articles')
 @Unique(['slug'])
 @Index(['isBanned'])
 @ObjectType()
-export class Product extends BaseEntity {
+export class Article extends BaseEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn('uuid')
   id: string;
@@ -45,18 +45,6 @@ export class Product extends BaseEntity {
   @Column('double', { default: 0 })
   rating: number;
 
-  @Field()
-  @Column('double', { default: 0 })
-  offerPrice: number;
-
-  @Field()
-  @Column('double', { default: 0 })
-  price: number;
-
-  @Field()
-  @Column('double', { default: 0 })
-  yourSavings: number;
-
   @Column({ default: false })
   isBanned: boolean;
 
@@ -71,12 +59,11 @@ export class Product extends BaseEntity {
   version: number;
 
   @Field(() => Category)
-  @ManyToOne(() => Category, category => category.products)
+  @ManyToOne(() => Category, category => category.articles)
   category: Category;
 
   @BeforeInsert()
   async slugify() {
     this.slug = makeSlug(this.title);
-    this.yourSavings = this.offerPrice - this.price;
   }
 }

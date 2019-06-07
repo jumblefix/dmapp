@@ -2,7 +2,7 @@ import { IsNumber } from 'class-validator';
 import { Field, InputType } from 'type-graphql';
 
 @InputType()
-export class ProductInput {
+export class ArticleInput {
   @Field()
   title: string;
 
@@ -10,17 +10,11 @@ export class ProductInput {
   coverImage: string;
 
   @Field()
+  @IsNumber()
   rating: number;
 
   @Field()
   description: string;
-
-  @Field()
-  @IsNumber()
-  price: number;
-
-  @Field()
-  offerPrice: number;
 
   @Field()
   categoryId: string;

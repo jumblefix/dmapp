@@ -1,35 +1,31 @@
 import { Arg, Mutation, Resolver } from 'type-graphql';
+import { Article } from '~api/entity/Article';
 import { Category } from '~api/entity/Category';
-import { Product } from '~api/entity/Product';
 import { errorMessages } from '~utils/common';
-import { ProductInput } from './ProductInput';
+import { ArticleInput } from './ArticleInput';
 
 @Resolver()
-export class AddProduct {
-  @Mutation(() => Product)
-  async addProduct(@Arg('data')
+export class AddArticle {
+  @Mutation(() => Article)
+  async addArticle(@Arg('data')
   {
     title,
     coverImage,
     rating,
     description,
-    price,
-    offerPrice,
     categoryId,
-  }: ProductInput): Promise<Product> {
+  }: ArticleInput): Promise<Article> {
     const category = await Category.findOne(categoryId);
 
     if (!category) {
       throw new Error(errorMessages.invalidCategory);
     }
 
-    const c = Product.create({
+    const c = Article.create({
       title,
       coverImage,
       rating,
       description,
-      price,
-      offerPrice,
       category,
     });
 

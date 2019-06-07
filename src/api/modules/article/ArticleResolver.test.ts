@@ -3,10 +3,10 @@ import { Connection } from 'typeorm';
 import { connectTestDb } from '~api/db';
 import { Category } from '~api/entity/Category';
 import {
-  addProductMutation,
-  getProductQuery,
-  getProductsByCategoryQuery,
-  listProductsQuery,
+  addArticleMutation,
+  getArticleQuery,
+  getArticlesByCategoryQuery,
+  listArticlesQuery,
 } from '~api/graphql-queries';
 import { errorMessages } from '~utils/common';
 import { gqlCall } from '~utils/test-utils';
@@ -22,74 +22,74 @@ afterAll(async () => {
   await conn.close();
 });
 
-describe('ProductResolver', () => {
-  describe('listProducts', () => {
-    it('should return list of products', async () => {
+describe('ArticleResolver', () => {
+  describe('listArticles', () => {
+    it('should return list of articles', async () => {
       const response = await gqlCall({
-        source: print(listProductsQuery),
+        source: print(listArticlesQuery),
       });
       expect(response).toMatchObject({
         data: {
-          listProducts: [],
+          listArticles: [],
         },
       });
       const res2 = await gqlCall({
-        source: print(listProductsQuery),
+        source: print(listArticlesQuery),
         variableValues: {
           page: 2,
         },
       });
       expect(res2).toMatchObject({
         data: {
-          listProducts: [],
+          listArticles: [],
         },
       });
     });
   });
 
-  describe('getProduct', () => {
-    it('should return list of products', async () => {
+  describe('getArticle', () => {
+    it('should return list of articles', async () => {
       const res = await gqlCall({
-        source: print(getProductQuery),
+        source: print(getArticleQuery),
         variableValues: {
           id: '',
         },
       });
       expect(res).toMatchObject({
         data: {
-          getProduct: null,
+          getArticle: null,
         },
       });
       const response = await gqlCall({
-        source: print(getProductQuery),
+        source: print(getArticleQuery),
         variableValues: {
           id: '123',
         },
       });
       expect(response).toMatchObject({
         data: {
-          getProduct: null,
+          getArticle: null,
         },
       });
     });
   });
 
-  describe('getProductsByCategory', () => {
-    it('should return list of products', async () => {
+  describe('getArticlesByCategory', () => {
+    it('should return list of articles', async () => {
       const response = await gqlCall({
-        source: print(getProductsByCategoryQuery),
+        source: print(getArticlesByCategoryQuery),
         variableValues: {
           categoryId: category.id.toString(),
         },
       });
       expect(response).toMatchObject({
         data: {
-          getProductsByCategory: [],
+          getArticlesByCategory: [],
         },
       });
 
       const res = await gqlCall({
-        source: print(getProductsByCategoryQuery),
+        source: print(getArticlesByCategoryQuery),
         variableValues: {
           categoryId: '0',
         },
@@ -101,10 +101,10 @@ describe('ProductResolver', () => {
     });
   });
 
-  describe('addProduct', () => {
-    it('should add product', async () => {
-      const product = {
-        title: 'Product Name',
+  describe('addArticle', () => {
+    it('should add article', async () => {
+      const article = {
+        title: 'Article Name',
         coverImage: 'something',
         description:
           'description must be at least 140 characters description must be at' +
@@ -112,15 +112,13 @@ describe('ProductResolver', () => {
           'description must be at least 140 characters description must be at' +
           'least 140 characters',
         rating: 0,
-        price: 99,
-        offerPrice: 99,
         categoryId: category.id.toString(),
       };
 
       const invalid = await gqlCall({
-        source: print(addProductMutation),
+        source: print(addArticleMutation),
         variableValues: {
-          data: { ...product, title: '' },
+          data: { ...article, title: '' },
         },
       });
 
@@ -129,17 +127,16 @@ describe('ProductResolver', () => {
       });
 
       const response = await gqlCall({
-        source: print(addProductMutation),
+        source: print(addArticleMutation),
         variableValues: {
-          data: product,
+          data: article,
         },
       });
 
       expect(response).toMatchObject({
         data: {
-          addProduct: {
-            title: product.title,
-            price: product.price,
+          addArticle: {
+            title: article.title,
             category: {
               name: category.name,
             },
@@ -147,10 +144,10 @@ describe('ProductResolver', () => {
         },
       });
 
-      const invalidProd = { ...product, categoryId: '0' };
+      const invalidProd = { ...article, categoryId: '0' };
 
       const res = await gqlCall({
-        source: print(addProductMutation),
+        source: print(addArticleMutation),
         variableValues: {
           data: invalidProd,
         },
