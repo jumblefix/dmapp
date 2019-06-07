@@ -91,3 +91,5 @@ $RECYCLE.BIN/
 .next
 /coverage
 /data
+cypress/videos
+cypress/screenshots

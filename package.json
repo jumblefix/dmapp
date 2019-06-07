@@ -16,7 +16,10 @@
     "test:watch": "jest --watch",
     "cover": "jest --coverage",
     "pretest": "yarn postinstall",
-    "cypress:open": "cypress open"
+    "cy:run": "cypress run",
+    "cy:open": "cypress open",
+    "cypress:test": "start-server-and-test start http://localhost:3000 cy:run",
+    "cypress:open": "start-server-and-test start http://localhost:3000 cy:open"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
@@ -98,6 +101,7 @@
     "lint-staged": "^8.1.7",
     "nodemon": "^1.19.1",
     "prettier": "1.17.1",
+    "start-server-and-test": "^1.9.1",
     "ts-jest": "^24.0.2",
     "ts-node": "^8.2.0",
     "tsconfig-paths": "^3.8.0",

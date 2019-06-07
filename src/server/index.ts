@@ -4,9 +4,7 @@ import { sitemapAndRobots } from './sitemapRobots';
 
 const dev = process.env.NODE_ENV !== 'production';
 const port = process.env.PORT || 3000;
-const ROOT_URL = dev
-  ? `http://localhost:${port}`
-  : 'https://dhayaec.localtunnel.me';
+const ROOT_URL = `http://localhost:${port}`;
 
 const app = next({ dev });
 const handle = app.getRequestHandler();
