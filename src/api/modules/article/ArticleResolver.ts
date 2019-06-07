@@ -1,43 +1,43 @@
 import { Arg, Mutation, Query, Resolver } from 'type-graphql';
+import { Article } from '~api/entity/Article';
 import { Category } from '~api/entity/Category';
-import { Product } from '~api/entity/Product';
-import { errorMessages, productSchema } from '~utils/common';
+import { articleSchema, errorMessages } from '~utils/common';
 import { ITEMS_PER_PAGE } from '~utils/constants';
 import { skipPage, validateInputs } from '~utils/utils';
-import { ProductInput } from './ProductInput';
+import { ArticleInput } from './ArticleInput';
 
-@Resolver(Product)
-export class ProductResolver {
-  @Query(() => [Product])
-  async listProducts(
+@Resolver(Article)
+export class ArticleResolver {
+  @Query(() => [Article])
+  async listArticles(
     @Arg('page', { defaultValue: 1 }) page: number,
-  ): Promise<Product[]> {
-    return Product.find({
+  ): Promise<Article[]> {
+    return Article.find({
       skip: skipPage(page),
       take: ITEMS_PER_PAGE,
       relations: ['category'],
     });
   }
 
-  @Query(() => Product, { nullable: true })
-  async getProduct(@Arg('id') id: string): Promise<Product | undefined> {
+  @Query(() => Article, { nullable: true })
+  async getArticle(@Arg('id') id: string): Promise<Article | undefined> {
     if (!id) {
       return;
     }
-    return Product.findOne(id, { relations: ['category'] });
+    return Article.findOne(id, { relations: ['category'] });
   }
 
-  @Query(() => [Product])
-  async getProductsByCategory(
+  @Query(() => [Article])
+  async getArticlesByCategory(
     @Arg('categoryId') categoryId: string,
     @Arg('page', { defaultValue: 1 }) page: number,
-  ): Promise<Product[]> {
+  ): Promise<Article[]> {
     const category = await Category.findOne(categoryId);
     if (!category) {
       throw new Error(errorMessages.invalidCategory);
     }
 
-    return Product.find({
+    return Article.find({
       skip: skipPage(page),
       take: ITEMS_PER_PAGE,
       where: { category },
@@ -45,24 +45,20 @@ export class ProductResolver {
     });
   }
 
-  @Mutation(() => Product)
-  async addProduct(@Arg('data')
+  @Mutation(() => Article)
+  async addArticle(@Arg('data')
   {
     title,
     coverImage,
     description,
     rating,
-    price,
-    offerPrice,
     categoryId,
-  }: ProductInput): Promise<Product> {
-    await validateInputs(productSchema, {
+  }: ArticleInput): Promise<Article> {
+    await validateInputs(articleSchema, {
       title,
       coverImage,
       description,
       rating,
-      price,
-      offerPrice,
     });
 
     const category = await Category.findOne(categoryId);
@@ -71,13 +67,11 @@ export class ProductResolver {
       throw new Error(errorMessages.invalidCategory);
     }
 
-    const c = Product.create({
+    const c = Article.create({
       title,
       coverImage,
       rating,
       description,
-      price,
-      offerPrice,
       category,
     });
 

@@ -10,13 +10,13 @@ import {
   UseMiddleware,
 } from 'type-graphql';
 import { getManager } from 'typeorm';
+import { Article } from '~api/entity/Article';
 import { Category } from '~api/entity/Category';
-import { Product } from '~api/entity/Product';
 import { checkIsAdmin } from '~api/middlewares';
 import { errorMessages } from '~utils/common';
 import { Notification, NotificationPayload } from './Notification';
 
-@Resolver(Product)
+@Resolver(Article)
 export class CategoryResolver {
   private autoIncrement = 0;
 
