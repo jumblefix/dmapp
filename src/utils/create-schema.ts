@@ -2,13 +2,14 @@ import { RedisPubSub } from 'graphql-redis-subscriptions';
 import * as Redis from 'ioredis';
 import { buildSchema } from 'type-graphql';
 import { ArticleResolver } from '~api/modules/article/ArticleResolver';
+import { ArticleTagResolver } from '~api/modules/article_tag/ArticleTagResolver';
 import { CategoryResolver } from '~api/modules/category/CategoryResolver';
+import { TagResolver } from '~api/modules/tag/TagResolver';
 import { LoginResolver } from '~api/modules/user/Login';
 import { LogoutResolver } from '~api/modules/user/Logout';
 import { RegisterResolver } from '~api/modules/user/Register';
 import { UserAccountUtils } from '~api/modules/user/UserAccountUtils';
 import { UserResolver } from '~api/modules/user/UserResolver';
-import { TagResolver } from '../api/modules/tag/TagResolver';
 
 export const createSchema = () => {
   const options: Redis.RedisOptions = {
@@ -31,6 +32,7 @@ export const createSchema = () => {
       ArticleResolver,
       CategoryResolver,
       TagResolver,
+      ArticleTagResolver,
     ],
     pubSub,
   });

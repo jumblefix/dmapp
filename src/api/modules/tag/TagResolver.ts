@@ -13,6 +13,7 @@ export class TagResolver {
     return Tag.find({
       skip: skipPage(page),
       take: ITEMS_PER_PAGE,
+      relations: ['articleConnection'],
     });
   }
 

@@ -4,6 +4,7 @@ import { Category } from '~api/entity/Category';
 import { articleSchema, errorMessages } from '~utils/common';
 import { ITEMS_PER_PAGE } from '~utils/constants';
 import { skipPage, validateInputs } from '~utils/utils';
+import { ArticleTags } from '../../entity/ArticleTags';
 import { ArticleInput } from './ArticleInput';
 
 @Resolver(Article)
@@ -15,7 +16,7 @@ export class ArticleResolver {
     return Article.find({
       skip: skipPage(page),
       take: ITEMS_PER_PAGE,
-      relations: ['category'],
+      relations: ['category', 'tagConnection'],
     });
   }
 
@@ -76,5 +77,12 @@ export class ArticleResolver {
     });
 
     return c.save();
+  }
+
+  @Mutation(() => Boolean)
+  async deleteArticle(@Arg('articleId', () => String) articleId: string) {
+    await ArticleTags.delete({ articleId });
+    await Article.delete({ id: articleId });
+    return true;
   }
 }

@@ -11,10 +11,10 @@ import { Tag } from './Tag';
 @Entity()
 export class ArticleTags extends BaseEntity {
   @PrimaryColumn()
-  articleId: number;
+  articleId: string;
 
   @PrimaryColumn()
-  tagId: number;
+  tagId: string;
 
   @ManyToOne(() => Article, article => article.tagConnection, { primary: true })
   @JoinColumn({ name: 'articleId' })

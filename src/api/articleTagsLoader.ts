@@ -16,7 +16,7 @@ const batchArticles = async (tagIds: number[]) => {
     },
   });
 
-  const tagIdToArticles: { [key: number]: Article[] } = {};
+  const tagIdToArticles: { [key: string]: Article[] } = {};
 
   articleTags.forEach(ab => {
     if (ab.tagId in tagIdToArticles) {
