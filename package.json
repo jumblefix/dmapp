@@ -15,7 +15,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "cover": "jest --coverage",
-    "pretest": "yarn postinstall"
+    "pretest": "yarn postinstall",
+    "cypress:open": "cypress open"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
@@ -89,6 +90,7 @@
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-plugin-styled-components": "^1.10.0",
     "cross-env": "^5.2.0",
+    "cypress": "^3.3.1",
     "enzyme": "^3.9.0",
     "husky": "^2.3.0",
     "jest": "^24.8.0",
