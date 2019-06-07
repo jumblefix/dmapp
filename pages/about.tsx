@@ -1,5 +1,6 @@
 import { NextContext } from 'next';
 import React from 'react';
+import Header from '../src/components/Header';
 import { Title } from '../src/components/ui/Title';
 
 interface AboutProps {
@@ -9,6 +10,7 @@ interface AboutProps {
 
 const About = ({ userAgent, url }: AboutProps) => (
   <div>
+    <Header />
     <h1>Hello World</h1>
     <p>{userAgent}</p>
     <Title>{url}</Title>

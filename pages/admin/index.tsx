@@ -1,17 +1,11 @@
-import Link from 'next/link';
 import React from 'react';
+import AdminHeader from '../../src/components/AdminHeader';
 
 export default class Admin extends React.Component {
   render() {
     return (
       <div>
-        <Link href="/" as="/">
-          <a href="/">Home</a>
-        </Link>
-        <br />
-        <Link href="/admin/manage" as="/admin/manage">
-          <a href="/admin">Manage</a>
-        </Link>
+        <AdminHeader />
         <p>Admin Home</p>
       </div>
     );

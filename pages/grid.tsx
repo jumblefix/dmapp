@@ -1,6 +1,7 @@
 import { Box, Flex } from '@rebass/grid';
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import Header from '../src/components/Header';
 import { errorMessages } from '../src/utils/common';
 
 const Bar = styled.div`
@@ -19,6 +20,7 @@ export default class extends Component {
   render() {
     return (
       <div>
+        <Header />
         <h1>{errorMessages.emailAlreadyExists}</h1>
         <Flex flexWrap="wrap">
           <Box px={2} py={2} width={1 / 2}>
