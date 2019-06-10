@@ -18,4 +18,7 @@ export class ArticleInput {
 
   @Field()
   categoryId: string;
+
+  @Field(() => [String])
+  tagIds: string[];
 }

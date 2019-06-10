@@ -6,6 +6,7 @@ import {
   CreateDateColumn,
   Entity,
   Index,
+  ManyToMany,
   ManyToOne,
   PrimaryGeneratedColumn,
   Unique,
@@ -15,6 +16,7 @@ import {
 
 import { makeSlug } from '~utils/utils';
 import { Category } from './Category';
+import { Tag } from './Tag';
 
 @Entity('articles')
 @Unique(['slug'])
@@ -61,6 +63,10 @@ export class Article extends BaseEntity {
   @Field(() => Category)
   @ManyToOne(() => Category, category => category.articles)
   category: Category;
+
+  @Field(() => [Tag])
+  @ManyToMany(() => Tag, tag => tag.article)
+  tag: Tag[];
 
   @BeforeInsert()
   async slugify() {
