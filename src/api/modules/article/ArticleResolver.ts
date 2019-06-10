@@ -4,6 +4,7 @@ import { Category } from '~api/entity/Category';
 import { articleSchema, errorMessages } from '~utils/common';
 import { ITEMS_PER_PAGE } from '~utils/constants';
 import { skipPage, validateInputs } from '~utils/utils';
+import { Tag } from '../../entity/Tag';
 import { ArticleInput } from './ArticleInput';
 
 @Resolver(Article)
@@ -15,7 +16,7 @@ export class ArticleResolver {
     return Article.find({
       skip: skipPage(page),
       take: ITEMS_PER_PAGE,
-      relations: ['category'],
+      relations: ['category', 'tag'],
     });
   }
 
@@ -24,7 +25,7 @@ export class ArticleResolver {
     if (!id) {
       return;
     }
-    return Article.findOne(id, { relations: ['category'] });
+    return Article.findOne(id, { relations: ['category', 'tag'] });
   }
 
   @Query(() => [Article])
@@ -41,7 +42,7 @@ export class ArticleResolver {
       skip: skipPage(page),
       take: ITEMS_PER_PAGE,
       where: { category },
-      relations: ['category'],
+      relations: ['category', 'tag'],
     });
   }
 
@@ -53,6 +54,7 @@ export class ArticleResolver {
     description,
     rating,
     categoryId,
+    tagIds,
   }: ArticleInput): Promise<Article> {
     await validateInputs(articleSchema, {
       title,
@@ -67,12 +69,19 @@ export class ArticleResolver {
       throw new Error(errorMessages.invalidCategory);
     }
 
+    let tags: Tag[] = [];
+
+    if (tagIds.length) {
+      tags = await Tag.findByIds(tagIds);
+    }
+
     const c = Article.create({
       title,
       coverImage,
       rating,
       description,
       category,
+      tag: tags,
     });
 
     return c.save();
