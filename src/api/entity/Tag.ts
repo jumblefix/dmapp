@@ -4,13 +4,12 @@ import {
   BeforeInsert,
   Column,
   Entity,
-  JoinTable,
-  ManyToMany,
+  OneToMany,
   PrimaryGeneratedColumn,
   Unique,
 } from 'typeorm';
 import { makeSlug } from '~utils/utils';
-import { Article } from './Article';
+import { ArticleTag } from './ArticleTag';
 
 @Entity('tags')
 @Unique(['slug'])
@@ -28,10 +27,8 @@ export class Tag extends BaseEntity {
   @Column('varchar', { length: 255 })
   slug: string;
 
-  @Field(() => [Article])
-  @ManyToMany(() => Article, article => article.tag)
-  @JoinTable()
-  article: Article[];
+  @OneToMany(() => ArticleTag, at => at.article)
+  article: Promise<ArticleTag[]>;
 
   @BeforeInsert()
   async slugify() {

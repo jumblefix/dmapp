@@ -1,4 +1,4 @@
-import { Field, ID, ObjectType } from 'type-graphql';
+import { Ctx, Field, ID, ObjectType } from 'type-graphql';
 import {
   BaseEntity,
   BeforeInsert,
@@ -6,8 +6,8 @@ import {
   CreateDateColumn,
   Entity,
   Index,
-  ManyToMany,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   Unique,
   UpdateDateColumn,
@@ -15,6 +15,8 @@ import {
 } from 'typeorm';
 
 import { makeSlug } from '~utils/utils';
+import { AppContext } from '../../types/types';
+import { ArticleTag } from './ArticleTag';
 import { Category } from './Category';
 import { Tag } from './Tag';
 
@@ -64,9 +66,13 @@ export class Article extends BaseEntity {
   @ManyToOne(() => Category, category => category.articles)
   category: Category;
 
-  @Field(() => [Tag])
-  @ManyToMany(() => Tag, tag => tag.article)
-  tag: Tag[];
+  @OneToMany(() => ArticleTag, ab => ab.tag)
+  tag: Promise<ArticleTag[]>;
+
+  @Field(() => [Tag], { nullable: true })
+  async tags(@Ctx() { articleLoader }: AppContext): Promise<Tag[]> {
+    return articleLoader.load(this.id);
+  }
 
   @BeforeInsert()
   async slugify() {

@@ -29,7 +29,7 @@ const connectionList: ConnectionList = {
     type: 'sqlite',
     database: path.join(__dirname, '../', '../', 'data', 'db.sqlite'),
     synchronize: true,
-    logging: false,
+    logging: true,
     entities: ['src/api/entity/**/*.*'],
     migrations: ['src/api/migration/**/*.*'],
     subscribers: ['src/api/subscriber/**/*.*'],

@@ -4,7 +4,6 @@ import { Category } from '~api/entity/Category';
 import { articleSchema, errorMessages } from '~utils/common';
 import { ITEMS_PER_PAGE } from '~utils/constants';
 import { skipPage, validateInputs } from '~utils/utils';
-import { Tag } from '../../entity/Tag';
 import { ArticleInput } from './ArticleInput';
 
 @Resolver(Article)
@@ -54,7 +53,6 @@ export class ArticleResolver {
     description,
     rating,
     categoryId,
-    tagIds,
   }: ArticleInput): Promise<Article> {
     await validateInputs(articleSchema, {
       title,
@@ -69,19 +67,12 @@ export class ArticleResolver {
       throw new Error(errorMessages.invalidCategory);
     }
 
-    let tags: Tag[] = [];
-
-    if (tagIds.length) {
-      tags = await Tag.findByIds(tagIds);
-    }
-
     const c = Article.create({
       title,
       coverImage,
       rating,
       description,
       category,
-      tag: tags,
     });
 
     return c.save();

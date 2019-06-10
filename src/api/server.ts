@@ -12,6 +12,7 @@ import * as http from 'http';
 import { AppContext } from '~types/types';
 import { Env } from '~utils/constants';
 import { createSchema } from '~utils/create-schema';
+import { createArticlesLoader } from './articleLoader';
 import { connectDb, createDb } from './db';
 import { redis } from './redis';
 
@@ -30,7 +31,11 @@ export const startServer = async () => {
 
   const server = new ApolloServer({
     schema: await createSchema(),
-    context: ({ req, res }: AppContext) => ({ req, res }),
+    context: ({ req, res }: AppContext) => ({
+      req,
+      res,
+      articleLoader: createArticlesLoader(),
+    }),
   });
 
   const RedisStore = connectRedis(session);

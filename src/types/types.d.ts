@@ -17,6 +17,7 @@ declare module 'styled-components' {
 }
 
 import { Request, Response } from 'express';
+import { createArticlesLoader } from '../api/articleLoader';
 export interface ConnectionList {
   [key: string]: any;
 }
@@ -24,6 +25,7 @@ export interface ConnectionList {
 export interface AppContext {
   req: Request;
   res: Response;
+  articleLoader: ReturnType<typeof createArticlesLoader>;
 }
 
 export type Lazy<T extends object> = Promise<T> | T;

@@ -100,7 +100,7 @@ export class CategoryResolver {
   }
 
   @Mutation(() => Category)
-  @UseMiddleware(checkIsAdmin)
+  // @UseMiddleware(checkIsAdmin)
   async addCategory(
     @Arg('name') name: string,
     @Arg('parentId', { nullable: true }) parentId: string,
