@@ -6,10 +6,10 @@ export class ArticleInput {
   @Field()
   title: string;
 
-  @Field()
+  @Field({ nullable: true })
   coverImage: string;
 
-  @Field()
+  @Field({ defaultValue: 0 })
   @IsNumber()
   rating: number;
 
@@ -19,6 +19,6 @@ export class ArticleInput {
   @Field()
   categoryId: string;
 
-  @Field(() => [String])
+  @Field(() => [String], { defaultValue: [] })
   tagIds: string[];
 }

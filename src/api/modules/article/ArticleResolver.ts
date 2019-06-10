@@ -58,9 +58,8 @@ export class ArticleResolver {
   }: ArticleInput): Promise<Article> {
     await validateInputs(articleSchema, {
       title,
-      coverImage,
       description,
-      rating,
+      tagIds,
     });
 
     const category = await Category.findOne(categoryId);

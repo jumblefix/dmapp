@@ -35,7 +35,7 @@ export class Article extends BaseEntity {
   @Column('varchar', { length: 255 })
   slug: string;
 
-  @Field()
+  @Field({ nullable: true })
   @Column('varchar', { length: 255, nullable: true })
   coverImage: string;
 

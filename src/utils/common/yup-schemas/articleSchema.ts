@@ -7,12 +7,6 @@ export const articleSchema = yup.object().shape({
     .min(3)
     .max(255)
     .required(),
-  coverImage: yup
-    .string()
-    .trim()
-    .min(3)
-    .max(255)
-    .required(),
   description: yup
     .string()
     .trim()
@@ -22,4 +16,5 @@ export const articleSchema = yup.object().shape({
     .number()
     .min(0)
     .max(10),
+  tagIds: yup.array().of(yup.string().min(10, 'Enter a valid tag')),
 });
