@@ -206,3 +206,11 @@ export const getCategoryBySlugQuery = gql`
     }
   }
 `;
+
+export const addTagMutation = gql`
+  mutation AddTag($name: String!) {
+    addTag(name: $name) {
+      name
+    }
+  }
+`;

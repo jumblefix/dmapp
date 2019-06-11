@@ -69,7 +69,7 @@ describe('UserAccountUtils', () => {
     it('should check email already exists', async () => {
       const response = await gqlCall({
         source: print(isEmailExistsQuery),
-        variableValues: {
+        vars: {
           email: 'testing@testing.co',
         },
       });
@@ -82,7 +82,7 @@ describe('UserAccountUtils', () => {
 
       const res1 = await gqlCall({
         source: print(isEmailExistsQuery),
-        variableValues: {
+        vars: {
           email: 'testing@blah.com',
         },
       });
@@ -95,7 +95,7 @@ describe('UserAccountUtils', () => {
 
       const res = await gqlCall({
         source: print(isEmailExistsQuery),
-        variableValues: {
+        vars: {
           email: 'testing',
         },
       });
@@ -127,7 +127,7 @@ describe('UserAccountUtils', () => {
     it('should return getUser', async () => {
       const response = await gqlCall({
         source: print(getUserQuery),
-        variableValues: {
+        vars: {
           id: '',
         },
       });
@@ -136,7 +136,7 @@ describe('UserAccountUtils', () => {
 
       const res = await gqlCall({
         source: print(getUserQuery),
-        variableValues: {
+        vars: {
           id: userId,
         },
       });
@@ -155,7 +155,7 @@ describe('UserAccountUtils', () => {
     it('should send forgot password email', async () => {
       const response = await gqlCall({
         source: print(forgotPasswordMutation),
-        variableValues: {
+        vars: {
           email,
         },
         userId,
@@ -169,7 +169,7 @@ describe('UserAccountUtils', () => {
 
       const response2 = await gqlCall({
         source: print(forgotPasswordMutation),
-        variableValues: {
+        vars: {
           email: '',
         },
         userId: '',
@@ -187,7 +187,7 @@ describe('UserAccountUtils', () => {
     it('should send forgot password email', async () => {
       const response = await gqlCall({
         source: print(changePasswordMutation),
-        variableValues: {
+        vars: {
           oldPassword: '123456',
           password: '1234567',
         },
@@ -205,7 +205,7 @@ describe('UserAccountUtils', () => {
 
       const failCase = await gqlCall({
         source: print(changePasswordMutation),
-        variableValues: {
+        vars: {
           oldPassword: 'something',
           password: '1234567',
         },
@@ -218,7 +218,7 @@ describe('UserAccountUtils', () => {
 
       const failCase3 = await gqlCall({
         source: print(changePasswordMutation),
-        variableValues: {
+        vars: {
           oldPassword: 'something',
           password: '1234567',
         },
@@ -235,7 +235,7 @@ describe('UserAccountUtils', () => {
     it('should send forgot password email', async () => {
       const response = await gqlCall({
         source: print(changeEmailMutation),
-        variableValues: {
+        vars: {
           email: 'email@email.com',
         },
         userId,
@@ -252,7 +252,7 @@ describe('UserAccountUtils', () => {
 
       const res2 = await gqlCall({
         source: print(changeEmailMutation),
-        variableValues: {
+        vars: {
           email: 'email@email.com',
         },
         userId: '99',
@@ -264,7 +264,7 @@ describe('UserAccountUtils', () => {
 
       const fail = await gqlCall({
         source: print(changeEmailMutation),
-        variableValues: {
+        vars: {
           email: 'email@email.com',
         },
         userId,
@@ -282,7 +282,7 @@ describe('UserAccountUtils', () => {
       const token = extractToken(t);
       const response = await gqlCall({
         source: print(verifyForgotPasswordMutation),
-        variableValues: {
+        vars: {
           token,
           password: 'newPassword',
           confirmPassword: 'newPassword',
@@ -299,7 +299,7 @@ describe('UserAccountUtils', () => {
       });
       const res = await gqlCall({
         source: print(verifyForgotPasswordMutation),
-        variableValues: {
+        vars: {
           token,
           password: 'newPassword',
           confirmPassword: 'newPassword2',
@@ -313,7 +313,7 @@ describe('UserAccountUtils', () => {
 
       const res2 = await gqlCall({
         source: print(verifyForgotPasswordMutation),
-        variableValues: {
+        vars: {
           token: '',
           password: 'newPassword',
           confirmPassword: 'newPassword',

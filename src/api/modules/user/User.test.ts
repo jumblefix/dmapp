@@ -24,7 +24,7 @@ describe('Register', () => {
   it('should register new user', async () => {
     const response = await gqlCall({
       source: print(registerMutation),
-      variableValues: {
+      vars: {
         data: user,
       },
     });
@@ -40,7 +40,7 @@ describe('Register', () => {
 
     const invalid = await gqlCall({
       source: print(registerMutation),
-      variableValues: {
+      vars: {
         data: { ...user, email: 'some' },
       },
     });
@@ -51,7 +51,7 @@ describe('Register', () => {
 
     const res = await gqlCall({
       source: print(registerMutation),
-      variableValues: {
+      vars: {
         data: user,
       },
     });
@@ -61,7 +61,7 @@ describe('Register', () => {
     });
     const res1 = await gqlCall({
       source: print(registerMutation),
-      variableValues: {
+      vars: {
         data: { ...user, isAdmin: true },
       },
     });
@@ -76,7 +76,7 @@ describe('Login', () => {
   it('should login', async () => {
     const response = await gqlCall({
       source: print(loginMutation),
-      variableValues: {
+      vars: {
         email: user.email,
         password: user.password,
       },
@@ -94,7 +94,7 @@ describe('Login', () => {
 
     const response2 = await gqlCall({
       source: print(loginMutation),
-      variableValues: {
+      vars: {
         email: user2.email,
         password: user2.password,
       },
@@ -110,7 +110,7 @@ describe('Login', () => {
 
     const response3 = await gqlCall({
       source: print(loginMutation),
-      variableValues: {
+      vars: {
         email: user3.email,
         password: user3.password,
       },

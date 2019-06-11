@@ -4,7 +4,7 @@ import { createSchema } from './create-schema';
 
 interface Options {
   source: string;
-  variableValues?: Maybe<{
+  vars?: Maybe<{
     [key: string]: any;
   }>;
   userId?: string;
@@ -15,7 +15,7 @@ let schema: GraphQLSchema;
 
 export const gqlCall = async ({
   source,
-  variableValues = {},
+  vars = {},
   userId = '',
   isAdmin = false,
 }: Options) => {
@@ -25,7 +25,7 @@ export const gqlCall = async ({
   const result = await graphql({
     schema,
     source,
-    variableValues,
+    variableValues: vars,
     contextValue: {
       req: {
         session: {

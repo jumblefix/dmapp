@@ -66,7 +66,7 @@ describe('CategoryResolver', () => {
     it('should return category', async () => {
       const response = await gqlCall({
         source: print(getCategoryByIdQuery),
-        variableValues: {
+        vars: {
           id: a1.id.toString(),
         },
       });
@@ -81,7 +81,7 @@ describe('CategoryResolver', () => {
 
       const res = await gqlCall({
         source: print(getCategoryByIdQuery),
-        variableValues: {
+        vars: {
           id: '',
         },
       });
@@ -96,7 +96,7 @@ describe('CategoryResolver', () => {
     it('should add category', async () => {
       const response = await gqlCall({
         source: print(addCategoryMutation),
-        variableValues: {
+        vars: {
           name: 'a2',
         },
         userId: user.id.toString(),
@@ -112,7 +112,7 @@ describe('CategoryResolver', () => {
 
       const res = await gqlCall({
         source: print(addCategoryWithParentMutation),
-        variableValues: {
+        vars: {
           name: 'a3',
           parentId: '0',
         },
@@ -124,7 +124,7 @@ describe('CategoryResolver', () => {
       });
       const res1 = await gqlCall({
         source: print(addCategoryWithParentMutation),
-        variableValues: {
+        vars: {
           name: 'a3',
           parentId: '0',
         },
@@ -141,7 +141,7 @@ describe('CategoryResolver', () => {
     it('should remove category', async () => {
       const response = await gqlCall({
         source: print(removeCategoryMutation),
-        variableValues: {
+        vars: {
           id: a112.id.toString(),
         },
         userId: user.id.toString(),
@@ -155,7 +155,7 @@ describe('CategoryResolver', () => {
 
       const res = await gqlCall({
         source: print(removeCategoryMutation),
-        variableValues: {
+        vars: {
           id: '0',
         },
         userId: user.id.toString(),
@@ -191,7 +191,7 @@ describe('CategoryResolver', () => {
     it('should return main category', async () => {
       const response = await gqlCall({
         source: print(getChildCategoriesQuery),
-        variableValues: {
+        vars: {
           id: a1.id.toString(),
         },
       });
@@ -213,7 +213,7 @@ describe('CategoryResolver', () => {
       });
       const res = await gqlCall({
         source: print(getChildCategoriesQuery),
-        variableValues: {
+        vars: {
           id: '0',
         },
       });
@@ -227,7 +227,7 @@ describe('CategoryResolver', () => {
     it('should return main category', async () => {
       const response = await gqlCall({
         source: print(getBreadCrumbPathQuery),
-        variableValues: {
+        vars: {
           id: a12.id.toString(),
         },
       });
@@ -244,7 +244,7 @@ describe('CategoryResolver', () => {
       });
       const res = await gqlCall({
         source: print(getBreadCrumbPathQuery),
-        variableValues: {
+        vars: {
           id: '0',
         },
       });
@@ -258,7 +258,7 @@ describe('CategoryResolver', () => {
     it('should return category', async () => {
       const response = await gqlCall({
         source: print(getCategoryBySlugQuery),
-        variableValues: {
+        vars: {
           slug: 'a1',
         },
       });
@@ -273,7 +273,7 @@ describe('CategoryResolver', () => {
       });
       const res = await gqlCall({
         source: print(getCategoryBySlugQuery),
-        variableValues: {
+        vars: {
           slug: 'blah',
         },
       });
@@ -284,7 +284,7 @@ describe('CategoryResolver', () => {
 
       const res1 = await gqlCall({
         source: print(getCategoryBySlugQuery),
-        variableValues: { slug: '' },
+        vars: { slug: '' },
       });
 
       expect(res1).toMatchObject({

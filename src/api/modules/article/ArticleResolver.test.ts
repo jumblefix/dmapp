@@ -35,7 +35,7 @@ describe('ArticleResolver', () => {
       });
       const res2 = await gqlCall({
         source: print(listArticlesQuery),
-        variableValues: {
+        vars: {
           page: 2,
         },
       });
@@ -51,7 +51,7 @@ describe('ArticleResolver', () => {
     it('should return list of articles', async () => {
       const res = await gqlCall({
         source: print(getArticleQuery),
-        variableValues: {
+        vars: {
           id: '',
         },
       });
@@ -62,7 +62,7 @@ describe('ArticleResolver', () => {
       });
       const response = await gqlCall({
         source: print(getArticleQuery),
-        variableValues: {
+        vars: {
           id: '123',
         },
       });
@@ -78,7 +78,7 @@ describe('ArticleResolver', () => {
     it('should return list of articles', async () => {
       const response = await gqlCall({
         source: print(getArticlesByCategoryQuery),
-        variableValues: {
+        vars: {
           categoryId: category.id.toString(),
         },
       });
@@ -90,7 +90,7 @@ describe('ArticleResolver', () => {
 
       const res = await gqlCall({
         source: print(getArticlesByCategoryQuery),
-        variableValues: {
+        vars: {
           categoryId: '0',
         },
       });
@@ -117,7 +117,7 @@ describe('ArticleResolver', () => {
 
       const invalid = await gqlCall({
         source: print(addArticleMutation),
-        variableValues: {
+        vars: {
           data: { ...article, title: '' },
         },
       });
@@ -128,7 +128,7 @@ describe('ArticleResolver', () => {
 
       const response = await gqlCall({
         source: print(addArticleMutation),
-        variableValues: {
+        vars: {
           data: article,
         },
       });
@@ -148,7 +148,7 @@ describe('ArticleResolver', () => {
 
       const res = await gqlCall({
         source: print(addArticleMutation),
-        variableValues: {
+        vars: {
           data: invalidProd,
         },
       });
