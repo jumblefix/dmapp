@@ -1,5 +1,5 @@
 import { RedisPubSub } from 'graphql-redis-subscriptions';
-import * as Redis from 'ioredis';
+import Redis from 'ioredis';
 import { buildSchema } from 'type-graphql';
 import { ArticleResolver } from '~api/modules/article/ArticleResolver';
 import { CategoryResolver } from '~api/modules/category/CategoryResolver';

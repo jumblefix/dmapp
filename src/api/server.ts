@@ -3,12 +3,12 @@ import 'reflect-metadata';
 // tslint:disable-next-line:no-var-requires
 require('dotenv-safe').config();
 import { ApolloServer } from 'apollo-server-express';
-import * as connectRedis from 'connect-redis';
-import * as cors from 'cors';
-import * as express from 'express';
-import * as session from 'express-session';
-import * as helmet from 'helmet';
-import * as http from 'http';
+import connectRedis from 'connect-redis';
+import cors from 'cors';
+import express from 'express';
+import session from 'express-session';
+import helmet from 'helmet';
+import http from 'http';
 import { AppContext } from '~types/types';
 import { Env, isProd, isTest, maxAge } from '~utils/constants';
 import { createSchema } from '~utils/create-schema';

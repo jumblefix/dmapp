@@ -16,6 +16,7 @@
   "prettier.singleQuote": true,
   "editor.minimap.enabled": false,
   "cSpell.words": [
+    "Interop",
     "Segoe",
     "Signup",
     "Truthy",
