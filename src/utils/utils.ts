@@ -1,10 +1,11 @@
 import { UserInputError, ValidationError } from 'apollo-server-core';
+import { GraphQLError } from 'graphql';
 import * as IORedis from 'ioredis';
 import slugify from 'slugify';
 import { v4 } from 'uuid';
 import { AppContext } from '~types/types';
 import { errorMessages } from '~utils/common';
-import { ITEMS_PER_PAGE, TokenTypes } from './constants';
+import { isProd, ITEMS_PER_PAGE, TokenTypes } from './constants';
 
 export const printMessage = (str: string) => `Hello ${str}`;
 
@@ -62,4 +63,17 @@ export const isAuthorized = (ctx: AppContext): boolean => {
     throw new Error(errorMessages.notAuthorized);
   }
   return true;
+};
+
+export const formatError = (error: GraphQLError) => {
+  if (!isProd) {
+    return error;
+  }
+
+  const { message, path, locations } = error;
+  return {
+    message,
+    path,
+    locations,
+  };
 };

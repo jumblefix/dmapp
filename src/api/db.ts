@@ -61,9 +61,9 @@ const connectionList: ConnectionList = {
     database: path.join(__dirname, '../', '../', 'data', 'prod.sqlite'),
     synchronize: false,
     logging: false,
-    entities: ['dist/entity/**/*.*'],
-    migrations: ['dist/migration/**/*.*'],
-    subscribers: ['dist/subscriber/**/*.*'],
+    entities: ['src/api/entity/**/*.ts'],
+    migrations: ['src/api/migration/**/*.ts'],
+    subscribers: ['src/api/subscriber/**/*.ts'],
   },
   root: {
     name: 'root',

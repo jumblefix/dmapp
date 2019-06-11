@@ -10,8 +10,9 @@ import * as session from 'express-session';
 import * as helmet from 'helmet';
 import * as http from 'http';
 import { AppContext } from '~types/types';
-import { Env } from '~utils/constants';
+import { Env, isProd, isTest, maxAge } from '~utils/constants';
 import { createSchema } from '~utils/create-schema';
+import { formatError } from '../utils/utils';
 import { connectDb, createDb } from './db';
 import { redis } from './redis';
 
@@ -28,9 +29,21 @@ export const startServer = async () => {
 
   const app = express();
 
+  const playgroundSettings: any = !isProd
+    ? {
+        settings: {
+          'request.credentials': 'include',
+        },
+      }
+    : false;
+
   const server = new ApolloServer({
     schema: await createSchema(),
     context: ({ req, res }: AppContext) => ({ req, res }),
+    tracing: !isProd,
+    debug: !isProd,
+    playground: playgroundSettings,
+    formatError,
   });
 
   const RedisStore = connectRedis(session);
@@ -55,8 +68,8 @@ export const startServer = async () => {
       saveUninitialized: false,
       cookie: {
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        maxAge: 1000 * 60 * 60 * 24 * 7 * 365, // 7 years
+        secure: isProd,
+        maxAge,
       },
     }),
   );
@@ -65,7 +78,7 @@ export const startServer = async () => {
 
   server.applyMiddleware({ app, cors: false });
 
-  const port = process.env.NODE_ENV === Env.test ? 4001 : 4000;
+  const port = isTest ? 4001 : 4000;
   const host = 'localhost';
 
   const httpServer = http.createServer(app);
