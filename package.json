@@ -20,10 +20,12 @@
     "cy:run": "cypress run",
     "cy:open": "cypress open",
     "cypress:test": "start-server-and-test start http://localhost:3000 cy:run",
-    "cypress:open": "start-server-and-test start http://localhost:3000 cy:open"
+    "cypress:open": "start-server-and-test start http://localhost:3000 cy:open",
+    "type:check": "tsc --project tsconfig.json --noEmit"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
+      "type:check",
       "yarn pretty",
       "yarn lint",
       "git add"
