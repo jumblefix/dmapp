@@ -9,7 +9,7 @@ export class TagResolver {
   @Mutation(() => Tag)
   async addTag(@Arg('name') name: string): Promise<Tag> {
     if (!name && name.length < 3) {
-      throw new Error(errorMessages.invalidCategory);
+      throw new Error(errorMessages.invalidTag);
     }
     const tag = Tag.create({ name });
     return tag.save();

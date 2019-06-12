@@ -1,12 +1,12 @@
 import {
   Arg,
   Mutation,
-  Publisher,
-  PubSub,
+  // Publisher,
+  // PubSub,
   Query,
   Resolver,
-  Root,
-  Subscription,
+  // Root,
+  // Subscription,
   UseMiddleware,
 } from 'type-graphql';
 import { getManager } from 'typeorm';
@@ -14,11 +14,11 @@ import { Article } from '~api/entity/Article';
 import { Category } from '~api/entity/Category';
 import { checkIsAdmin } from '~api/middlewares';
 import { errorMessages } from '~utils/common';
-import { Notification, NotificationPayload } from './Notification';
+// import { Notification, NotificationPayload } from './Notification';
 
 @Resolver(Article)
 export class CategoryResolver {
-  private autoIncrement = 0;
+  // private autoIncrement = 0;
 
   @Query(() => Category, { nullable: true })
   async getCategoryById(@Arg('id') id: string): Promise<Category | undefined> {
@@ -28,24 +28,24 @@ export class CategoryResolver {
     return Category.findOne(id);
   }
 
-  @Subscription({ topics: 'NOTIFICATIONS' })
-  normalSubscription(@Root()
-  {
-    id,
-    message,
-  }: NotificationPayload): Notification {
-    return { id, message, date: new Date() };
-  }
+  // @Subscription({ topics: 'NOTIFICATIONS' })
+  // normalSubscription(@Root()
+  // {
+  //   id,
+  //   message,
+  // }: NotificationPayload): Notification {
+  //   return { id, message, date: new Date() };
+  // }
 
-  @Mutation(() => Boolean)
-  async publisherMutation(
-    @PubSub('NOTIFICATIONS') publish: Publisher<NotificationPayload>,
-    @Arg('message', { nullable: true }) message?: string,
-  ): Promise<boolean> {
-    const newId = this.autoIncrement + 1;
-    await publish({ id: newId, message });
-    return true;
-  }
+  // @Mutation(() => Boolean)
+  // async publisherMutation(
+  //   @PubSub('NOTIFICATIONS') publish: Publisher<NotificationPayload>,
+  //   @Arg('message', { nullable: true }) message?: string,
+  // ): Promise<boolean> {
+  //   const newId = this.autoIncrement + 1;
+  //   await publish({ id: newId, message });
+  //   return true;
+  // }
 
   @Query(() => Category, { nullable: true })
   async getCategoryBySlug(

@@ -214,3 +214,11 @@ export const addTagMutation = gql`
     }
   }
 `;
+
+export const listTagsQuery = gql`
+  query ListTags($page: Float) {
+    listTags(page: $page) {
+      name
+    }
+  }
+`;

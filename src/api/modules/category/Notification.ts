@@ -1,18 +1,18 @@
-import { Field, ID, ObjectType } from 'type-graphql';
+// import { Field, ID, ObjectType } from 'type-graphql';
 
-@ObjectType()
-export class Notification {
-  @Field(() => ID)
-  id: number;
+// @ObjectType()
+// export class Notification {
+//   @Field(() => ID)
+//   id: number;
 
-  @Field({ nullable: true })
-  message?: string;
+//   @Field({ nullable: true })
+//   message?: string;
 
-  @Field(() => Date)
-  date: Date;
-}
+//   @Field(() => Date)
+//   date: Date;
+// }
 
-export interface NotificationPayload {
-  id: number;
-  message?: string;
-}
+// export interface NotificationPayload {
+//   id: number;
+//   message?: string;
+// }

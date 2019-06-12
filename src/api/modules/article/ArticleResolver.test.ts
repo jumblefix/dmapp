@@ -10,12 +10,15 @@ import {
 } from '~api/graphql-queries';
 import { errorMessages } from '~utils/common';
 import { gqlCall } from '~utils/test-utils';
+import { Tag } from '../../entity/Tag';
 
 let conn: Connection;
 let category: Category;
+let tag: Tag;
 beforeAll(async () => {
   conn = await connectTestDb();
   category = await Category.create({ name: 'Category Name' }).save();
+  tag = await Tag.create({ name: 'test-tag' }).save();
 });
 
 afterAll(async () => {
@@ -113,6 +116,7 @@ describe('ArticleResolver', () => {
           'least 140 characters',
         rating: 0,
         categoryId: category.id.toString(),
+        tagIds: [tag.id],
       };
 
       const invalid = await gqlCall({
