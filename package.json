@@ -5,7 +5,7 @@
     "dev": "nodemon",
     "build": "next build && tsc && tsc --project tsconfig.server.json",
     "start": "cross-env NODE_ENV=production ts-node --project tsconfig.server.json src/server/",
-    "lint": "tslint --project tsconfig.json -c tslint.json --fix",
+    "lint": "yarn type:check && tslint --project tsconfig.json -c tslint.json --fix",
     "pretty": "prettier 'pages/**/*.t{s,sx}' 'src/**/*.t{s,sx}' '*.js' --write",
     "postinstall": "link-module-alias",
     "preinstall": "command -v link-module-alias && link-module-alias clean || true",
@@ -25,7 +25,6 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "type:check",
       "yarn pretty",
       "yarn lint",
       "git add"
