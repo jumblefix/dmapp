@@ -7,6 +7,7 @@ import connectRedis from 'connect-redis';
 import cors from 'cors';
 import express from 'express';
 import session from 'express-session';
+// import { printSchema } from 'graphql';
 import helmet from 'helmet';
 import http from 'http';
 import { AppContext } from '~types/types';
@@ -37,8 +38,12 @@ export const startServer = async () => {
       }
     : false;
 
+  const schema = await createSchema();
+
+  // console.log(printSchema(schema));
+
   const server = new ApolloServer({
-    schema: await createSchema(),
+    schema,
     context: ({ req, res }: AppContext) => ({ req, res }),
     tracing: !isProd,
     debug: !isProd,

@@ -28,6 +28,12 @@ export const clientMenu: MenuList = {
     name: 'Grid',
     icon: '',
   },
+  contact: {
+    href: '/contact',
+    as: '/contact',
+    name: 'Contact Us',
+    icon: '',
+  },
   admin: {
     href: '/admin',
     as: '/admin',
