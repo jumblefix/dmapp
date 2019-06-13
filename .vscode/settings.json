@@ -52,6 +52,7 @@
     "nbsp",
     "nohoist",
     "nprogress",
+    "ntml",
     "ormconfig",
     "parens",
     "precommit",
@@ -81,5 +82,6 @@
   "javascript.validate.enable": true,
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "lit-html.tags": ["html", "raw", "template"]
 }

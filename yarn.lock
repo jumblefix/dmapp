@@ -6688,6 +6688,13 @@ listr@0.14.3, listr@^0.14.2:
     p-map "^2.0.0"
     rxjs "^6.3.3"
 
+lit-ntml@^2.7.0:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/lit-ntml/-/lit-ntml-2.7.0.tgz#7c036dff24fcdc9e4d04fcca88c6d4e918b61033"
+  integrity sha512-+Jp09CpVwT4BThZcdTmBGNfJc8c2LZm/Q7RlwuR66vJHbExqcrL9fVT0i8jWq9MpFnPS7fri05EMdp5hclUK/Q==
+  dependencies:
+    parse5 "^5.1.0"
+
 load-json-file@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/load-json-file/-/load-json-file-2.0.0.tgz#7947e42149af80d696cbf797bcaabcfe1fe29ca8"
