@@ -34,6 +34,12 @@ export const clientMenu: MenuList = {
     name: 'Contact Us',
     icon: '',
   },
+  register: {
+    href: '/register',
+    as: '/register',
+    name: 'Register',
+    icon: '',
+  },
   admin: {
     href: '/admin',
     as: '/admin',
