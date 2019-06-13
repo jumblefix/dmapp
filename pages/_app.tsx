@@ -1,8 +1,11 @@
+import { ApolloClient, NormalizedCacheObject } from 'apollo-boost';
 import App, { Container, NextAppContext } from 'next/app';
 import Router from 'next/router';
 import NProgress from 'nprogress';
 import React from 'react';
+import { ApolloProvider } from 'react-apollo';
 import { ThemeProvider } from 'styled-components';
+import withApollo from '../src/lib/withApollo';
 import { AppGlobalStyle } from '../src/utils/globalStyles';
 import { appTheme } from '../src/utils/theme';
 
@@ -14,8 +17,12 @@ Router.events.on('routeChangeStart', (url: string) => {
 Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
-export default class MyApp extends App {
-  static async getInitialProps({ Component, ctx }: NextAppContext) {
+interface NextAppContextExtended extends NextAppContext {
+  apolloClient: ApolloClient<NormalizedCacheObject>;
+}
+
+class DmApp extends App<NextAppContextExtended> {
+  static async getInitialProps({ Component, ctx }: NextAppContextExtended) {
     let pageProps = {};
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);
@@ -24,14 +31,18 @@ export default class MyApp extends App {
   }
 
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps, apolloClient } = this.props;
     return (
       <Container>
         <AppGlobalStyle />
         <ThemeProvider theme={appTheme}>
-          <Component {...pageProps} />
+          <ApolloProvider client={apolloClient}>
+            <Component {...pageProps} />
+          </ApolloProvider>
         </ThemeProvider>
       </Container>
     );
   }
 }
+
+export default withApollo(DmApp);
