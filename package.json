@@ -72,6 +72,7 @@
     "iconv-lite": "^0.4.24",
     "ioredis": "^4.9.5",
     "isomorphic-unfetch": "^3.0.0",
+    "lit-ntml": "^2.7.0",
     "mysql2": "^1.6.5",
     "next": "^8.1.0",
     "nprogress": "^0.2.0",
