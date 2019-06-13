@@ -16,6 +16,7 @@
   "prettier.singleQuote": true,
   "editor.minimap.enabled": false,
   "cSpell.words": [
+    "Formik",
     "Interop",
     "Segoe",
     "Signup",
@@ -28,6 +29,7 @@
     "captcha",
     "cellpadding",
     "cellspacing",
+    "codegen",
     "copyfiles",
     "dhayaec",
     "dmapp",
@@ -65,6 +67,7 @@
     "submodule",
     "tsutils",
     "typeorm",
+    "unfetch",
     "varchar",
     "zeit"
   ],

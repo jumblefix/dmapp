@@ -1,7 +1,8 @@
-import { NextContext } from 'next';
 import React from 'react';
 import Header from '../src/components/Header';
 import { Title } from '../src/components/ui/Title';
+import { MainCategoryComponent } from '../src/generated/generated';
+import { MyClientAppContext } from '../src/types/types';
 
 interface AboutProps {
   userAgent: string;
@@ -18,10 +19,32 @@ const About = ({ userAgent, url }: AboutProps) => (
     <p>Welcome to my about us page</p>
     <p>This is an example of page</p>
     <Title>Hello World!</Title>
+    <MainCategoryComponent>
+      {({ data, error, loading }) => {
+        if (loading) {
+          return <p>Loading... </p>;
+        }
+
+        if (error) {
+          return <p>{error}</p>;
+        }
+
+        if (data) {
+          const { getMainCategory } = data;
+          return getMainCategory.map(i => (
+            <li key={i.slug}>
+              {i.name}
+              {i.id}
+              {i.slug}
+            </li>
+          ));
+        }
+      }}
+    </MainCategoryComponent>
   </div>
 );
 
-About.getInitialProps = async ({ req }: NextContext) => {
+About.getInitialProps = async ({ req }: MyClientAppContext) => {
   const userAgent = req ? req.headers['user-agent'] : navigator.userAgent;
   const url = req ? req.headers.host : location.host;
   return { userAgent, url };

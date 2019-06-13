@@ -27,3 +27,10 @@ export interface AppContext {
 }
 
 export type Lazy<T extends object> = Promise<T> | T;
+
+import { ApolloClient, NormalizedCacheObject } from 'apollo-boost';
+import { NextContext } from 'next';
+
+export interface MyClientAppContext extends NextContext {
+  apolloClient: ApolloClient<NormalizedCacheObject>;
+}
